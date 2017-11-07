@@ -136,6 +136,9 @@
 								</div>
 						
 						</div>
+					<?php 	
+						}
+					 ?>
 				</div>
 				<!-- list FEATURED PRODUCTS -->
 				<div class="new_product">
@@ -207,9 +210,7 @@
 						</div>
 					</div>
 				</div>
-				<?php 	
-							}
-						 ?>
+				
 		    </div>  
 		</div>
 	</div>
