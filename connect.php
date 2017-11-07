@@ -1,11 +1,11 @@
 <?php
 	$username = "root";
 	$password = "vovanquang";
-	$severname = "localhost";
+	$servername = "localhost";
 	$dbname = "giuaki_development";
-	$conn = mysqli_connect($severname,$username,$password,$dbname);
+	$conn = mysqli_connect($servername,$username,$password,$dbname);
 	mysqli_set_charset($conn, 'utf8');
-	if(! $conn){
+	if(!$conn){
 		die("không thể kết nối..".mysqli_connect_error());
 	}
 	// else{

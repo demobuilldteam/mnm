@@ -45,15 +45,17 @@
 					</form>
 				</div>
 				<div class="col-xs-12 col-sm-4 col-md-4 shop">
-					<i class="fa fa-shopping-cart fa-3x " aria-hidden="true"></i>
+					<i class="fa fa-shopping-cart  " aria-hidden="true"></i>
 					<h4>shopping cart: </h4>
-					<i class="fa fa-bars" aria-hidden="true">
+					<i class="fa fa-bars ccc" aria-hidden="true">
+					</i>
+					<div class="list_menu">
 						<ul>
 							<li><a href="" id="">my account</a></li>
 							<li><a href="" id="">Login</a></li>
 							<li><a href="" id="">sign up</a></li>
 						</ul>
-					</i>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -2,6 +2,114 @@
 	margin: 0px;
 	padding: 0px;	
 }
+.show_menu{
+	display: block;
+}
+.shop{
+	position: relative;
+}
+.shop ul li a {
+    color: grey;
+}
+/*.list_menu{
+    display: none;;
+}*/
+.shop ul {
+    width: 136px;
+    background: white;
+    border: 1px solid #dedddd;
+    padding: 0px 10px;
+    /*position: absolute;*/
+    display: none;
+    /*right: 8px;*/
+}
+
+.shop ul li {
+    list-style: none;
+    height: 25px;
+    line-height: 25px;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: grey;
+}
+
+i.fa.fa-bars {
+    width: 30px;
+    height: 39px;
+    line-height: 30px;
+    text-align: center;
+    /*position: relative;*/
+    color: #afaeae;
+    margin-top: 7px;
+    border: 1px solid #e1e1e1;
+    padding: 2px;
+    box-sizing: border-box;
+}
+
+i.fa.fa-bars:hover {
+    cursor: pointer;
+}
+
+.shop h4 {
+    height: 40px;
+    width: 40%;
+    line-height: 33px;
+    float: left;
+    padding: 0px 5px;
+    color: grey;
+    text-transform: uppercase;
+    font-size: 15px;
+}
+
+i.fa.fa-shopping-cart {
+    width: 15%;
+    height: 40px;
+    line-height: 40px;
+    float: left;
+    color: #9a2927;
+    margin-top: 3px;
+}
+ul.dropdown-menu {
+    width: 30%;
+    left: 14%;
+    text-transform: uppercase;
+}
+
+button#dropdownMenu1 {
+    width: 30%;
+    background: #757575;
+    margin-left: 10%;
+    color: white;
+    text-transform: uppercase;
+}
+
+.dropdown {
+    width: 100% !important;
+    background: #9a2927;
+    padding: 10px 0px;
+}
+
+.link p {
+    line-height: 30px;
+    text-transform: uppercase;
+}
+
+.link i.fa.fa-home {
+    float: left;
+    line-height: 30px;
+    padding-left: 20px;
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.link {
+    width: 100%;
+    height: 50px;
+    background: white;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #dedddd;
+}
 
 .detail {
     float: left;
@@ -26,7 +134,12 @@
     line-height: 40px;
     color: white;
     text-transform: uppercase;
+    transition: 0.4s;
     font-weight: bold;
+}
+
+.add_card:hover {
+    background: black;
 }
 
 .add_card:hover {
@@ -77,9 +190,10 @@ img.image_new {
     color: #9a2927;
     text-transform: uppercase;
     height: 50px;
-    line-height: 50px;
+    line-height: 1.5em;
     text-align: left;
     font-size: 16px;
+    font-family: sans-serif;
 }
 
 .new_product h4 {
@@ -91,6 +205,7 @@ img.image_new {
     background: #f5f5f5;
     padding-left: 14px;
     font-weight: bold;
+    margin-bottom: 0px;
 }
 
 .new_product {
@@ -153,6 +268,7 @@ img.image_new {
 .row {
     padding: 0px 15px;
     /* background: white; */
+    margin-top: 20px;
 }
 
 .rules {
@@ -406,4 +522,7 @@ i.fa.fa-angle-double-right:hover{
 }
 .selected{
 	border-top:4px solid white;
+}
+.link a {
+    color: grey;
 }
