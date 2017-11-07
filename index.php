@@ -16,6 +16,7 @@
 <body>
 	<!-- head -->
 	<?php include 'head.php' ?>
+	<a href="admin/lite_version/index.html">admin</a>
 	<!-- content -->
 	<div class="content">
 		<div class="container">
