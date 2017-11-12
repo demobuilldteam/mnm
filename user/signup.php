@@ -72,8 +72,20 @@
 			?>
 			<div class="right_content">
 				<div class="login">
-					<h4>Login</h4>
+					<h4>Sign up</h4>
 					<form action="" method="POST"  role="form">
+						<div class="form-group">
+							<label  for="">Full Name <span style="color: red;">*</span>: </label>
+							<input type="email" class="form-control" id="" >
+						</div>
+						<div class="form-group">
+							<label  for="">Address <span style="color: red;">*</span>: </label>
+							<input type="email" class="form-control" id="" >
+						</div>
+						<div class="form-group">
+							<label  for="">Company<span style="color: blue;">*</span>: </label>
+							<input type="email" class="form-control" id="" >
+						</div>
 						<div class="form-group">
 							<label  for="">Email Addess <span style="color: red;">*</span>: </label>
 							<input type="email" class="form-control" id="" >
@@ -82,9 +94,13 @@
 							<label  for="">Password <span style="color: red;">*</span>: </label>
 							<input type="Password" class="form-control" id="" >
 						</div>
-						<button type="submit" class="btn btn-info">Login</button>
+						<div class="form-group">
+							<label  for="">Confirm Password <span style="color: red;">*</span>: </label>
+							<input type="Password" class="form-control" id="" >
+						</div>
+						<button type="submit" class="btn btn-info">Sign up</button>
 						<div class="sig">
-							<span >or you want create a new account? </span> <div class="nut_sing"><a href="signup.php">Sign up</a></div>
+							<span >or you had a account? </span> <div class="nut_sing"><a href="login.php">Login</a></div>
 						</div>
 					</form>					
 				</div>

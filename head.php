@@ -37,7 +37,7 @@
 						<ul>
 							<li><a href="#" >my account</a></li>
 							<li><a href="user/login.php">Login</a></li>
-							<li><a href="#" >sign up</a></li>
+							<li><a href="" >sign up</a></li>
 						</ul>
 					</div>
 				</div>
