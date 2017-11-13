@@ -1,3 +1,6 @@
+<?php 
+session_start();
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,12 +9,22 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>SHOP MOTORCYCLES</title>
 	<link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
-
 	<link rel="stylesheet" href="../css/bootstrap.min.css">
 	<link rel="stylesheet" href="../css/style.css">
 	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="../js/jquery.min.js"></script>
 	<script src="../js/index.js"></script>
+	<script>
+		function checkpass(){
+			var password = document.getElementById('pass').value;
+			var passwordconfirm = document.getElementById('passconfirm').value;
+			if (password!=passconfirm) {
+				document.getElementById('errpass').innerHTML = "Password confrim must equal password!";
+				document.getElementById('errpass').style.color = "red";
+			}
+		}
+	</script>
 </head>
 <body>
 <div class="head">
@@ -71,39 +84,52 @@
 				include '../menu_left_content.php'
 			?>
 			<div class="right_content">
+				<?php 
+					
+					if(isset($_SESSION['notice'])){
+				?>
+				<div class="alert alert-success" role="alert"><?php echo $_SESSION['notice']; ?></div>	
+				<?php	
+					session_destroy();
+					}else{
+				?>
 				<div class="login">
 					<h4>Sign up</h4>
-					<form action="" method="POST"  role="form">
+					<form action="new_user.php" method="get"  role="form" >
 						<div class="form-group">
 							<label  for="">Full Name <span style="color: red;">*</span>: </label>
-							<input type="email" class="form-control" id="" >
+							<input type="text" class="form-control" name="fullname" required>
 						</div>
 						<div class="form-group">
 							<label  for="">Address <span style="color: red;">*</span>: </label>
-							<input type="email" class="form-control" id="" >
+							<input type="text" class="form-control" name="address" required>
 						</div>
 						<div class="form-group">
 							<label  for="">Company<span style="color: blue;">*</span>: </label>
-							<input type="email" class="form-control" id="" >
+							<input type="text" class="form-control" name="company" required>
 						</div>
 						<div class="form-group">
 							<label  for="">Email Addess <span style="color: red;">*</span>: </label>
-							<input type="email" class="form-control" id="" >
-						</div>
+							<input type="email" class="form-control" name="email">
+						</tdiv>
 						<div class="form-group">
 							<label  for="">Password <span style="color: red;">*</span>: </label>
-							<input type="Password" class="form-control" id="" >
+							<input type="Password" class="form-control" name="password" id="pass" required>
 						</div>
 						<div class="form-group">
 							<label  for="">Confirm Password <span style="color: red;">*</span>: </label>
-							<input type="Password" class="form-control" id="" >
+							<input type="Password" class="form-control" name="confirmpassword" id="passconfirm" required onblur="checkpass();">
+							<p id="errpass"></p>
 						</div>
-						<button type="submit" class="btn btn-info">Sign up</button>
+						<button type="submit" class="btn btn-info" value="submit" name="submit">Sign up</button>
 						<div class="sig">
 							<span >or you had a account? </span> <div class="nut_sing"><a href="login.php">Login</a></div>
 						</div>
 					</form>					
 				</div>
+				<?php
+					}
+				?>
 			</div>
 		</div>
 	</div>

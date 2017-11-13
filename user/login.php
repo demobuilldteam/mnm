@@ -1,3 +1,6 @@
+<?php 
+	session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,7 +48,7 @@
 					</form>
 				</div>
 				<div class="col-xs-12 col-sm-4 col-md-4 shop">
-					<i class="fa fa-shopping-cart  " aria-hidden="true"></i>
+					<i class="fa fa-shopping-cart fa-3x " aria-hidden="true"></i>
 					<h4>shopping cart: </h4>
 					<i class="fa fa-bars ccc" aria-hidden="true">
 					</i>
@@ -73,16 +76,25 @@
 			<div class="right_content">
 				<div class="login">
 					<h4>Login</h4>
-					<form action="" method="POST"  role="form">
+					<?php 
+						if(isset($_SESSION['errlogin'])){
+
+					?>
+					<div class="alert alert-danger" role="alert"><?php echo $_SESSION['errlogin']; ?></div>	
+					<?php
+						session_destroy();
+						}
+					?>
+					<form action="checklogin.php" method="POST"  role="form">
 						<div class="form-group">
 							<label  for="">Email Addess <span style="color: red;">*</span>: </label>
-							<input type="email" class="form-control" id="" >
+							<input type="email" class="form-control" name="email" >
 						</div>
 						<div class="form-group">
 							<label  for="">Password <span style="color: red;">*</span>: </label>
-							<input type="Password" class="form-control" id="" >
+							<input type="password" class="form-control" name="pass" >
 						</div>
-						<button type="submit" class="btn btn-info">Login</button>
+						<button type="submit" class="btn btn-info" name="login" value="login">Login</button>
 						<div class="sig">
 							<span >or you want create a new account? </span> <div class="nut_sing"><a href="signup.php">Sign up</a></div>
 						</div>

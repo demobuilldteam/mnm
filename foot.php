@@ -5,11 +5,11 @@
 					<div class="col-md-3 col-xs-12 col-sm-6 colu">
 						<p>quick links</p>
 						<ul>
-							<li><a href="#" id="">home</a></li>
-							<li><a href="#" id="">new products</a></li>
-							<li><a href="#" id="">all products</a></li>
-							<li><a href="#" id="">specials</a></li>
-							<li><a href="#" id="">contacts</a></li>
+							<li><a href="index.php" id="">home</a></li>
+							<li><a href="newproduct.php" id="">new products</a></li>
+							<li><a href="allproduct.php" id="">all products</a></li>
+							<li><a href="" id="">specials</a></li>
+							<li><a href="contact.php" id="">contacts</a></li>
 							<li><a href="#" id="">reviews</a></li>
 						</ul>
 					</div>

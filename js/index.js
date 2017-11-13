@@ -18,6 +18,7 @@ $(document).ready(function() {
 		event.preventDefault();
 		/* Act on the event */
 		$('.list_menu ul').slideToggle("slow"); 
+		
 	});
 	$(window).scroll(function(event) {
 		var scoll = $(window).scrollTop();
