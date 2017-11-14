@@ -8,6 +8,9 @@
 		$qr = "select * from User where email_address='{$email}' and password='{$pass}'";
 		$rs = mysqli_query($conn,$qr);
 		if(mysqli_num_rows($rs)>0){
+			while ($row = mysqli_fetch_array($rs)) {
+				$_SESSION['fullname'] = $row['fullname'];
+			}
 			header("location:../index.php");
 		}else{
 			$_SESSION['errlogin'] = "Email address or password is invaild!";

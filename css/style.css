@@ -3,6 +3,27 @@
     padding: 0px;   
 }
 
+.menu_right ul li a {
+    text-align: center;
+    padding: 0px 20px;
+    text-decoration: none;
+}
+
+.menu_right ul li {
+    float: left;
+    list-style: none;
+    height: auto;
+    
+}
+
+.menu_right {
+    width: 30%;
+    float: left;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+
 .nut_sing:hover {
     cursor: pointer;
 }
@@ -506,7 +527,7 @@ i.fa.fa-angle-double-right:hover{
 .menu_left{
     width: 60%;
     height: 50px;
-
+    float: left;
 }
 .menu_left ul{
     width: 100%;

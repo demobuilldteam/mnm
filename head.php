@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <div class="head">
 	<div class="menu">
 		<div class="container">
@@ -11,6 +12,19 @@
 					<li><a href="#" id="review">reviews</a></li>
 				</ul>
 			</div>
+			<?php 
+				if(isset($_SESSION['fullname'])){
+					
+			?>
+				<div class="menu_right">
+					<ul>
+						<li><a href="#"><?php echo $_SESSION['fullname']; ?></a></li>
+						<li><a href="user/logout.php"><?php echo "Log out" ?></a></li>
+					</ul>
+				</div>
+			<?php
+				}
+			?>	
 		</div>
 	</div>
 	<div class="banner">

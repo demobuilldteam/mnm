@@ -15,6 +15,26 @@
 	
 	<script src="../js/jquery.min.js"></script>
 	<script src="../js/index.js"></script>
+	<script>
+		function checkEle(obj){
+			if(obj.value==""){
+				document.getElementById('erremail').innerHTML = "Email is can't empty!";
+				document.getElementById('erremail').style.color = "red";
+			}else{
+				document.getElementById('erremail').innerHTML = "";
+			}
+			// alert(obj.value);
+		}
+		function checkPas(obj){
+			if(obj.value==""){
+				document.getElementById('errpass').innerHTML = "Password is can't empty!";
+				document.getElementById('errpass').style.color = "red";
+			}else{
+				document.getElementById('errpass').innerHTML = "";
+			}
+			// alert(obj.value);
+		}
+	</script>
 </head>
 <body>
 <div class="head">
@@ -88,11 +108,13 @@
 					<form action="checklogin.php" method="POST"  role="form">
 						<div class="form-group">
 							<label  for="">Email Addess <span style="color: red;">*</span>: </label>
-							<input type="email" class="form-control" name="email" >
+							<input type="email" class="form-control" id="email" name="email" onblur="checkEle(this);">
+							<p id="erremail"></p>
 						</div>
 						<div class="form-group">
 							<label  for="">Password <span style="color: red;">*</span>: </label>
-							<input type="password" class="form-control" name="pass" >
+							<input type="password" class="form-control" id="password" name="pass" onblur="checkPas(this);">
+							<p id="errpass"></p>
 						</div>
 						<button type="submit" class="btn btn-info" name="login" value="login">Login</button>
 						<div class="sig">
