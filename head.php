@@ -18,8 +18,13 @@
 			?>
 				<div class="menu_right">
 					<ul>
-						<li><a href="#"><?php echo $_SESSION['fullname']; ?></a></li>
-						<li><a href="user/logout.php"><?php echo "Log out" ?></a></li>
+						<li><a href="#"><i class="fa fa-user" aria-hidden="true"></i><?php echo $_SESSION['fullname']; ?></a></li>
+						<li><a href="user/logout.php"><?php echo "Log out"; ?></a></li>
+						<?php 
+							if(isset($_SESSION['rule'])){
+						?>
+						<li><a href="admin/lite_version/index.html"><?php echo "Admin"; ?></a></li>
+						<?php } ?>
 					</ul>
 				</div>
 			<?php

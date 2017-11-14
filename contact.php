@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +13,26 @@
 	
 	<script src="js/jquery.min.js"></script>
 	<script src="js/index.js"></script>
+	<?php 
+	// session_start();
+	include ("connect.php");
+	if(isset($_POST['submit'])){
+		$fullname = mysqli_real_escape_string($conn,$_POST['fullname']);
+		$email = mysqli_real_escape_string($conn,$_POST['email']);
+		$mess = mysqli_real_escape_string($conn,$_POST['mess']);
+
+		$qr = "insert into feedback(fullname,email,messages) values ('{$fullname}','{$email}','{$mess}')";
+		if(mysqli_query($conn,$qr)==true){
+			$_SESSION['note_feedback'] = "Thank you feedbacked for us!";
+			
+		}else{
+			$_SESSION['note_feedback'] = "Had a few error!!";
+		}
+		mysqli_close($conn);
+		// header("location:contact.php");
+		// echo $qr;
+	}
+?>
 </head>
 <body>
 <div class="head">
@@ -45,7 +66,7 @@
 					</form>
 				</div>
 				<div class="col-xs-12 col-sm-4 col-md-4 shop">
-					<i class="fa fa-shopping-cart  " aria-hidden="true"></i>
+					<i class="fa fa-shopping-cart  fa-3x" aria-hidden="true"></i>
 					<h4>shopping cart: </h4>
 					<i class="fa fa-bars ccc" aria-hidden="true">
 					</i>
@@ -73,16 +94,35 @@
 			<div class="right_content">
 				<div class="contect">
 					<h4>Contact Us</h4>
-					<h5>Frteam-2017</h5>
-					<p>If</p>
-					<form action="" method="POST"  role="form">
+					<div class="us">
+						<h5>Frteam-2017</h5>
+						<p>If you have anything questions or wonder please write down and send it for us.Thank you!!</p>
+					</div>
+					<?php 
+						if (isset($_SESSION['note_feedback'])) {
+					?>
+							<div class="alert alert-success">
+								<?php echo $_SESSION['note_feedback']; ?>
+							</div>
+					<?php
+						session_destroy();
+						}
+					?>
+					<form action="contact.php" method="POST"  role="form">
 						<div class="form-group">
 							<label  for="">Full Name <span style="color: red;">*</span>: </label>
-							<input type="email" class="form-control" id="" >
+							<input type="text" class="form-control" id="" name="fullname" >
 						</div>
 						<div class="form-group">
 							<label  for="">Email Addess <span style="color: red;">*</span>: </label>
-							<input type="email" class="form-control" id="" >
+							<input type="email" class="form-control" id="" name="email" >
+						</div>
+						<div class="form-group">
+							<label  for="">Messages <span style="color: red;"></span>: </label>
+							<textarea class="form-control" name="mess" id="" cols="40" rows="10"></textarea>
+						</div>
+						<div class="form-group">
+							<button type="submit" class="btn btn-primary" name="submit" value="submit"><i class="fa fa-paper-plane fa-2x" aria-hidden="true"><span style="font-size: 18px;line-height: 43px;padding-left: 5px;">Please,send it for us!</span></i></button>
 						</div>
 
 					</form>					

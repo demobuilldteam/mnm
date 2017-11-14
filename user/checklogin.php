@@ -10,6 +10,9 @@
 		if(mysqli_num_rows($rs)>0){
 			while ($row = mysqli_fetch_array($rs)) {
 				$_SESSION['fullname'] = $row['fullname'];
+				if ($row['rule']=="admin") {
+					$_SESSION['rule'] = $row['rule'];
+				}
 			}
 			header("location:../index.php");
 		}else{
