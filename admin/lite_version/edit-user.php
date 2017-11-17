@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php ob_start() ; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,7 +32,85 @@
             <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
     </div>
     <div id="main-wrapper">
-        <?php include ("left-sidebar.php"); ?>
+         <header class="topbar">
+    <nav class="navbar top-navbar navbar-toggleable-sm navbar-light">
+        <!-- ============================================================== -->
+        <!-- Logo -->
+        <!-- ============================================================== -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index.html">
+                <!-- Logo icon -->
+                <b>
+                    <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                    <!-- Dark Logo icon -->
+                    <img src="../assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+                    
+                </b>
+                <!--End Logo icon -->
+                <!-- Logo text -->
+                <span>
+                    <!-- dark Logo text -->
+                    <h4>SHOP MOTORCYCLES</h4>
+                </span>
+            </a>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Logo -->
+        <!-- ============================================================== -->
+        <div class="navbar-collapse">
+            <!-- ============================================================== -->
+            <!-- toggle and nav items -->
+            <!-- ============================================================== -->
+            <ul class="navbar-nav mr-auto mt-md-0 ">
+                <!-- This is  -->
+                <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                <li class="nav-item hidden-sm-down">
+                    <form class="app-search p-l-20">
+                        <input type="text" class="form-control" placeholder="Search for..."> <a class="srh-btn"><i class="ti-search"></i></a>
+                    </form>
+                </li>
+            </ul>
+            <!-- ============================================================== -->
+            <!-- User profile and search -->
+            <!-- ============================================================== -->
+            <ul class="navbar-nav my-lg-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../assets/images/users/1.jpg" alt="user" class="profile-pic m-r-5" />Markarn Doe</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+    <aside class="left-sidebar">
+        <!-- Sidebar scroll-->
+        <div class="scroll-sidebar">
+            <!-- Sidebar navigation-->
+            <nav class="sidebar-nav">
+                <ul id="sidebarnav">
+                    
+                    <li>
+                        <a href="pages-profile.php" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Profile</a>
+                    </li>
+                    <li>
+                        <a href="table-loai.php" class="waves-effect"><i class="fa fa-table m-r-10" aria-hidden="true"></i>Loại sản phẩm</a>
+                    </li>
+                     <li>
+                        <a href="table-user.php" class="waves-effect"><i class="fa fa-table m-r-10" aria-hidden="true"></i>User</a>
+                    </li>
+                    <li>
+                        <a href="pages-blank.html" class="waves-effect"><i class="fa fa-columns m-r-10" aria-hidden="true"></i>Blank Page</a>
+                    </li>
+                    <li>
+                        <a href="pages-error-404.html" class="waves-effect"><i class="fa fa-info-circle m-r-10" aria-hidden="true"></i>Error 404</a>
+                    </li>
+                </ul>
+                <div class="text-center m-t-30">
+                    <a href="https://wrappixel.com/templates/monsteradmin/" class="btn btn-danger"> Upgrade to Pro</a>
+                </div>
+            </nav>
+            <!-- End Sidebar navigation -->
+        </div>
+    </aside>
         <div class="page-wrapper">
             <div class="container-fluid">
                 <div class="row page-titles">
@@ -47,7 +125,37 @@
                         <a href="https://wrappixel.com/templates/monsteradmin/" class="btn pull-right hidden-sm-down btn-success"> Upgrade to Pro</a>
                     </div>
                 </div>
-              
+                <?php 
+                    
+                    if(isset($_POST['submit'])){
+                        include '../../connect.php';
+                        $fullname = $_POST['fullname'];
+                        $address = $_POST['address'];
+                        $company = $_POST['company'];
+                        $email_address = $_POST['email_address'];
+                        // $password = $_POST['password'];
+                        $rule = $_POST['rule'];
+                        $email_old = $_POST['email_old'];
+
+                        $filename = $_FILES['hinhanh']['name'];
+                        // if(empty($_FILES) || !isset($_FILES['hinhanh'])){
+                        $file_tmp = $_FILES['hinhanh']['tmp_name'];
+                        move_uploaded_file($file_tmp,'../../images/'.$filename);
+                        if($filename == ""){
+                            $qrup = "update User set fullname='$fullname',address='$address',company='$company',email_address='$email_address',rule='$rule' where email_address='$email_old'";
+                        }else{
+                            $qrup = "update User set fullname='$fullname',address='$address',company='$company',email_address='$email_address',image='$filename',rule='$rule' where email_address='$email_old'";
+                        }
+                        
+                        if(mysqli_query($conn,$qrup)){
+                            $_SESSION['noti-update']= "You updated successful";
+                            header("location:table-user.php");
+                        }else{
+                            echo mysqli_errors($conn);
+                        }
+                        
+                    }
+                ?>
                 <div class="row">
                     <!-- Column -->
                     <?php 
@@ -88,44 +196,56 @@
                     <div class="col-lg-8 col-xlg-9 col-md-7">
                         <div class="card">
                             <div class="card-block">
-                                <form class="form-horizontal form-material" method="POST" action="edit-user.php">
+                                <form class="form-horizontal form-material" method="POST" action="edit-user.php" enctype="multipart/form-data">
 
                                     <div class="form-group">
                                         <label class="col-md-12">Họ và tên</label>
                                         <div class="col-md-12">
-                                            <input type="text" placeholder="<?php echo $row['fullname']; ?>" class="form-control form-control-line">
+                                            <input type="text" name="fullname" value="<?php echo $row['fullname']; ?>" class="form-control form-control-line">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">Ảnh đại diện</label>
+                                        <div class="col-md-12">
+                                            <input type="file" name="hinhanh" class="form-control form-control-line">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-12">Quê quán</label>
                                         <div class="col-md-12">
-                                            <input type="text" placeholder="<?php echo $row['address']; ?>" class="form-control form-control-line">
+                                            <input type="text" name="address" value="<?php echo $row['address']; ?>" class="form-control form-control-line">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-12">Công ty</label>
                                         <div class="col-md-12">
-                                            <input type="text" placeholder="<?php echo $row['company']; ?>" class="form-control form-control-line">
+                                            <input type="text" name="company" value="<?php echo $row['company']; ?>" class="form-control form-control-line">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="example-email" class="col-md-12">Email</label>
                                         <div class="col-md-12">
-                                            <input type="email" placeholder="<?php echo $row['email_address']; ?>" class="form-control form-control-line" name="example-email" id="example-email">
+                                            <input type="email"  value="<?php echo $row['email_address']; ?>" class="form-control form-control-line" name="email_address" id="email_address">
+                                            <input type="hidden"  value="<?php echo $row['email_address']; ?>" class="form-control form-control-line" name="email_old" >
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-12">Mật khẩu</label>
                                         <div class="col-md-12">
-                                            <input type="password" value="<?php echo $row['password']; ?>" class="form-control form-control-line">
+                                            <input type="password"  value="<?php echo $row['password']; ?>" class="form-control form-control-line" >
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">Quyền</label>
+                                        <div class="col-md-12">
+                                            <input type="text" name="rule"  value="<?php echo $row['rule']; ?>" class="form-control form-control-line" >
                                         </div>
                                     </div>
                                     
                                     
-                                    
                                     <div class="form-group">
                                         <div class="col-sm-12">
-                                            <button type="submit" name="submit" value="submit" class="btn btn-success">Update thông tin cá nhân</button>
+                                            <button type="submit" name="submit" value="capnhat" class="btn btn-success">Cập nhật</button>
                                         </div>
                                     </div>
                                 </form>
@@ -166,3 +286,4 @@
 </body>
 
 </html>
+<?php ob_flush()  ; ?>

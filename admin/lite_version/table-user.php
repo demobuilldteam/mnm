@@ -41,7 +41,9 @@
         <!-- ============================================================== -->
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
-        <?php include ("left-sidebar.php"); ?>
+        <?php 
+            session_start(); 
+            include ("left-sidebar.php"); ?>
         <div class="page-wrapper">
           
             <div class="container-fluid">
@@ -58,10 +60,17 @@
                         <a href="https://wrappixel.com/templates/monsteradmin/" class="btn pull-right hidden-sm-down btn-success"> Upgrade to Pro</a>
                     </div>
                 </div>
-                
+                <?php
+                if(isset($_SESSION['noti-update'])) {
+                ?>
+                <div class="alert alert-success">
+                   <?php echo $_SESSION['noti-update']; ?>
+                </div>
+                <?php session_destroy();} ?>
                 <div class="row">
                     <!-- column -->
                     <div class="col-sm-12">
+                        
                         <div class="card">
                             <div class="card-block">
                                 <h4 class="card-title">User</h4>
@@ -98,9 +107,9 @@
                                                 <td><?php echo $row['email_address']; ?></td>
                                                 <td><?php echo $row['password']; ?></td>
                                                 <td><?php echo $row['rule']; ?></td>
-                                                <td><img src="../../images/<?php echo $row['image']; ?>" alt="" width="150" height="150"></td>
+                                                <td><img src="../../images/<?php echo $row['image']; ?>" alt="" width="150" height="160"></td>
                                                 <td><a href="edit-user.php?email_address=<?php echo $row['email_address']; ?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-                                                <td><a href=""><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                                <td><a href="delete-user.php?email_address=<?php echo $row['email_address']; ?>"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
                                             </tr>
                                             <?php
                                                 $i += 1;}
