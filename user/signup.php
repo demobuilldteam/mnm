@@ -1,6 +1,3 @@
-<?php 
-session_start();
- ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,6 +22,8 @@ session_start();
 			}
 		}
 	</script>
+	<?php 	session_start(); ?>
+	
 </head>
 <body>
 <div class="head">
@@ -80,12 +79,133 @@ session_start();
 				<a href="../index.php"><i class="fa fa-home" aria-hidden="true"> / </i></a>
 				<p>Login</p>
 			</div>
-			<?php
-				include '../menu_left_content.php'
-			?>
+			<!-- menu left -->
+			<div class="menu_left_content">
+				<div class="menu_left_top">
+					<!-- 1 -->
+					<div class="menu_left_level1">
+						<div class="title" gender="1">
+							<p>helmets</p>
+						</div>
+
+						<i class="fa fa-angle-double-right fa1" aria-hidden="true"></i>
+					</div>
+					<ul class="menu_sub sub1">
+							<li><a href="#" id="">APPAREL</a></li>
+							<li><a href="#" id="">BRAKES</a></li>
+							<li><a href="#" id="">HANDLING</a></li>
+							<li><a href="#" id="">ENGINE</a></li>
+					</ul>
+
+
+					<!-- 2 -->
+					<div class="menu_left_level1">
+						<div class="title">
+							<p>mem's gear</p>
+						</div>
+						<i class="fa fa-angle-double-right fa2" aria-hidden="true"></i>
+					</div>
+					<ul class="menu_sub sub2">
+							<li><a href="#" id="">APPAREL</a></li>
+							<li><a href="#" id="">BRAKES</a></li>
+							<li><a href="#" id="">HANDLING</a></li>
+							<li><a href="#" id="">ENGINE</a></li>
+					</ul>
+
+					<!-- 3 -->
+					<div class="menu_left_level1">
+						<div class="title">
+							<p>parts</p>
+						</div>
+						
+						<i class="fa fa-angle-double-right fa3" aria-hidden="true"></i>
+					</div>
+					<ul class="menu_sub sub3">
+							<li><a href="#" id="">APPAREL</a></li>
+							<li><a href="#" id="">BRAKES</a></li>
+							<li><a href="#" id="">HANDLING</a></li>
+							<li><a href="#" id="">ENGINE</a></li>
+					</ul>
+					<!-- 4 -->
+					<div class="menu_left_level1">
+						<div class="title">
+							<p>parts</p>
+						</div>
+						
+						
+					</div>
+					<!-- 5 -->
+					<div class="menu_left_level1">
+						<div class="title">
+							<p>parts</p>
+						</div>
+						
+						
+					</div>
+					<!-- 6 -->
+					<div class="menu_left_level1">
+						<div class="title">
+							<p>parts</p>
+						</div>
+						
+						
+					</div>
+					<!-- 7 -->
+					<div class="menu_left_level1">
+						<div class="title">
+							<p>parts</p>
+						</div>
+						
+						
+					</div>
+				</div>
+				<div class="menu_left_bottom">
+					<h4>specials</h4>
+					<div class="item_product">
+						<img src="../images/iconmoto.png" alt="" width="100" height="50">
+						<div class="item_content">
+							<p>Produc's Name</p>
+							<p><strong>Price</strong></p>
+						</div>
+					</div>
+					<div class="item_product">
+						<img src="../images/iconmoto.png" alt="" width="100" height="50">
+						<div class="item_content">
+							<p>Produc's Name</p>
+							<p><strong>Price</strong></p>
+						</div>
+					</div>
+				</div>
+			</div>
 			<div class="right_content">
 				<?php 
-					
+					include ("../connect.php");
+					if(isset($_POST['submit'])){
+						// $target = "../images/".basename($_FILES['image']['name']);
+						// if(isset($_FILES['image'])){
+						// 		   echo $_FILES['image']['tmp_name'];
+						// }
+						$filename = $_FILES['hinhanh']['name'];
+						// if(empty($_FILES) || !isset($_FILES['hinhanh'])){
+						$file_tmp = $_FILES['hinhanh']['tmp_name'];
+						move_uploaded_file($file_tmp,'../images/'.$filename);
+						// }
+						// echo $filename;
+						$fullname = $_POST['fullname'];
+						$address = $_POST['address'];
+						$company = $_POST['company'];
+						$email = $_POST['email'];
+						$password = $_POST['password'];
+						$passwordconfirm = $_POST['confirmpassword'];
+
+						$qr = "insert into User(image,fullname,address,company,email_address,password,password_confirm) values ('{$filename}','{$fullname}','{$address}','{$company}','{$email}','{$password}','{$passwordconfirm}')";
+
+						if(mysqli_query($conn,$qr)==true){
+							// echo "successful";
+							$_SESSION['notice'] = "You created a new account successful!! Welcome to our Shop";
+						}
+						mysqli_close($conn);
+					}
 					if(isset($_SESSION['notice'])){
 				?>
 				<div class="alert alert-success" role="alert"><?php echo $_SESSION['notice']; ?></div>	
@@ -95,7 +215,11 @@ session_start();
 				?>
 				<div class="login">
 					<h4>Sign up</h4>
-					<form action="new_user.php" method="get"  role="form" >
+					<form action="signup.php" method="POST"  enctype="multipart/form-data">
+						<div class="form-group">
+							<label  for="">Your Avatar <span style="color: red;">*</span>: </label>
+							<input type="file" class="form-control" name="hinhanh" >
+						</div>
 						<div class="form-group">
 							<label  for="">Full Name <span style="color: red;">*</span>: </label>
 							<input type="text" class="form-control" name="fullname" required>
@@ -136,5 +260,6 @@ session_start();
 	<?php
 		include '../foot.php'
 	?>
+
 </div>	
 </body>

@@ -23,7 +23,7 @@
 						<?php 
 							if(isset($_SESSION['rule'])){
 						?>
-						<li><a href="admin/lite_version/index.html"><?php echo "Admin"; ?></a></li>
+						<li><a href="admin/lite_version/pages-profile.php"><?php echo "Admin"; ?></a></li>
 						<?php } ?>
 					</ul>
 				</div>
@@ -56,7 +56,7 @@
 						<ul>
 							<li><a href="#" >my account</a></li>
 							<li><a href="user/login.php">Login</a></li>
-							<li><a href="" >sign up</a></li>
+							<li><a href="user/signup.php" >sign up</a></li>
 						</ul>
 					</div>
 				</div>

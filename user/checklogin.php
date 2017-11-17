@@ -10,6 +10,8 @@
 		if(mysqli_num_rows($rs)>0){
 			while ($row = mysqli_fetch_array($rs)) {
 				$_SESSION['fullname'] = $row['fullname'];
+				$_SESSION['email_address'] = $row['email_address'];
+				$_SESSION['password'] = $row['password'];
 				if ($row['rule']=="admin") {
 					$_SESSION['rule'] = $row['rule'];
 				}
