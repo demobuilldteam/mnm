@@ -57,16 +57,41 @@
                         </ol>
                     </div>
                     <div class="col-md-6 col-4 align-self-center">
-                        <a href="https://wrappixel.com/templates/monsteradmin/" class="btn pull-right hidden-sm-down btn-success"> Upgrade to Pro</a>
+                        <a href="add-user.php" class="btn pull-right hidden-sm-down btn-success"> Add User</a>
                     </div>
                 </div>
-                <?php
-                if(isset($_SESSION['noti-update'])) {
-                ?>
-                <div class="alert alert-success">
-                   <?php echo $_SESSION['noti-update']; ?>
+                <div class="row">
+                    <?php
+                    if(isset($_SESSION['noti-update'])) {
+                    ?>
+                    <div class="alert alert-success">
+                       <?php echo $_SESSION['noti-update']; ?>
+                    </div>
+                    <?php session_destroy();} ?>
                 </div>
-                <?php session_destroy();} ?>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <?php
+                        if(isset($_SESSION['noti-delete'])) {
+                        ?>
+                        <div class="alert alert-success">
+                           <?php echo $_SESSION['noti-delete']; ?>
+                        </div>
+                        <?php session_destroy();} ?>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <?php
+                        if(isset($_SESSION['noti-add'])) {
+                        ?>
+                        <div class="alert alert-success">
+                           <?php echo $_SESSION['noti-add']; ?>
+                        </div>
+                        <?php session_destroy();} ?>
+                    </div>
+                </div>
                 <div class="row">
                     <!-- column -->
                     <div class="col-sm-12">
@@ -109,7 +134,7 @@
                                                 <td><?php echo $row['rule']; ?></td>
                                                 <td><img src="../../images/<?php echo $row['image']; ?>" alt="" width="150" height="160"></td>
                                                 <td><a href="edit-user.php?email_address=<?php echo $row['email_address']; ?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-                                                <td><a href="delete-user.php?email_address=<?php echo $row['email_address']; ?>"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                                <td><a href="delete-user.php?email_address=<?php echo $row['email_address']; ?>&password=<?php echo $row['password']; ?>"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
                                             </tr>
                                             <?php
                                                 $i += 1;}

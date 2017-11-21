@@ -67,7 +67,7 @@
 									<img src="images/iconmoto.png" class="image_new" alt="" width="150" height="150">
 								</div>
 								<h5><?php echo $ro['ten']; ?></h5>
-								<div class="info_product">
+									<div class="info_product">
 									
 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum quibusdam fugiat tenetur perspiciatis</p>
 									<p><span>price</span></p>

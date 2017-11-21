@@ -3,6 +3,11 @@
     padding: 0px;   
 }
 
+.infor p {
+    max-height: 30px;
+    overflow: hidden;
+}
+
 .contect .us {
     width: 100%;
     height: 90px;
@@ -105,6 +110,8 @@ button.btn.btn-info {
 
 .info_product {
     padding: 20px;
+    max-height: 109px;
+    overflow: hidden;
 }
 i.fa.fa-chevron-up.fa-2x {
     color: white;
@@ -282,6 +289,8 @@ button#dropdownMenu1 {
 
 .item_new {
     border-right: 1px solid #dedddd;
+    max-height: 400px;
+    /* overflow: hidden; */
 }
 .alll{
     border:none;

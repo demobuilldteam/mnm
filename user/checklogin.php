@@ -12,6 +12,7 @@
 				$_SESSION['fullname'] = $row['fullname'];
 				$_SESSION['email_address'] = $row['email_address'];
 				$_SESSION['password'] = $row['password'];
+				$_SESSION['image'] = $row['image'];
 				if ($row['rule']=="admin") {
 					$_SESSION['rule'] = $row['rule'];
 				}

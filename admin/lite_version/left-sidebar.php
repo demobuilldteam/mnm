@@ -31,8 +31,9 @@
                 <!-- This is  -->
                 <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
                 <li class="nav-item hidden-sm-down">
-                    <form class="app-search p-l-20">
-                        <input type="text" class="form-control" placeholder="Search for..."> <a class="srh-btn"><i class="ti-search"></i></a>
+                    <form class="app-search p-l-20" action="table-product.php" method="GET">
+                        <input type="text" class="form-control" name="search" placeholder="Search for..."> 
+                        <button type="submit" class="srh-btn"><i class="ti-search"></i></button>
                     </form>
                 </li>
             </ul>
@@ -40,9 +41,16 @@
             <!-- User profile and search -->
             <!-- ============================================================== -->
             <ul class="navbar-nav my-lg-0">
+                <?php 
+                    
+                    if(isset($_SESSION['fullname'])){
+                ?>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../assets/images/users/1.jpg" alt="user" class="profile-pic m-r-5" />Markarn Doe</a>
+                    <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../../images/user.jpg?>" alt="user" class="profile-pic m-r-5" /><?php echo $_SESSION['fullname'];?></a>
                 </li>
+                <?php 
+                    } 
+                ?>
             </ul>
         </div>
     </nav>
@@ -58,10 +66,13 @@
                     <a href="pages-profile.php" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Profile</a>
                 </li>
                 <li>
-                    <a href="table-loai.php" class="waves-effect"><i class="fa fa-table m-r-10" aria-hidden="true"></i>Loại sản phẩm</a>
+                    <a href="table-loai.php" class="waves-effect"><i class="fa fa-tasks m-r-10" aria-hidden="true"></i></i>Loại sản phẩm</a>
                 </li>
-                 <li>
-                    <a href="table-user.php" class="waves-effect"><i class="fa fa-table m-r-10" aria-hidden="true"></i>User</a>
+                <li>
+                    <a href="table-user.php" class="waves-effect"><i class="fa fa-address-card m-r-10" aria-hidden="true"></i>User</a>
+                </li>
+                <li>
+                    <a href="table-product.php" class="waves-effect"><i class="fa fa-product-hunt m-r-10" aria-hidden="true"></i>Product</a>
                 </li>
                 <li>
                     <a href="pages-blank.html" class="waves-effect"><i class="fa fa-columns m-r-10" aria-hidden="true"></i>Blank Page</a>

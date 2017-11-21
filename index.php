@@ -16,10 +16,10 @@
 	<script>
 		$(document).ready(function($) {
 			$('.title').click(function(event) {
-				var gender = $(this).attr('gender');
+				var maloai = $(this).attr('loai');
 				// alert(gender);
 
-				$.get("xuly.php",{gender_id: gender},function(data){
+				$.get("xuly.php",{maloais: maloai},function(data){
 					$('.add_p').html(data);
 					// alert(data);
 				});
@@ -39,7 +39,7 @@
 				include 'menu_left_content.php'
 			?>
 			<div class="right_content">
-
+				
 				<!-- carousel -->
 				<div class="slide">
 					<div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -103,7 +103,7 @@
 						$sql = "";
 						if(isset($_GET['search'])){
 							$ten = $_GET['search_field'];
-							$sql = "select ten,mota from products where ten	like '%$ten%'";
+							$sql = "select * from product where ten	like '%$ten%'";
 							$result = mysqli_query($conn,$sql);
 							
 								
@@ -117,11 +117,11 @@
 									<div class="col-md-3 col-xs-12 col-sm-6 item_new">
 										<h5><?php echo $row['ten']; ?></h5>
 										<div class="image">
-											<img src="images/iconmoto.png" class="image_new" alt="" width="150" height="150">
+											<img src="images/<?php echo $row['image']; ?>" class="image_new" alt="" width="150" height="150">
 										</div>
 										<div class="info_product">
-											<p><span>price</span></p>
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum quibusdam fugiat tenetur perspiciatis</p>
+											<p><span><?php echo $row['gia']; ?></span></p>
+											<p><?php echo $row['mota']; ?></p>
 										</div>
 										<div class="button">
 											<div class="add_card">
@@ -129,7 +129,7 @@
 											</div>
 											<div class="detail"><i class="fa fa-info" aria-hidden="true"></i></div>
 										</div>
-									</div>
+									</div>	
 								<?php 
 									}
 								 ?>

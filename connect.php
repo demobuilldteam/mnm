@@ -1,7 +1,8 @@
 <?php
 	$username = "root";
 	$password = "vovanquang";
-	$servername = "localhost";
+	$servername ="localhost";
+
 	$dbname = "shopmotor";
 	$conn = mysqli_connect($servername,$username,$password,$dbname);
 	mysqli_set_charset($conn, 'utf8');

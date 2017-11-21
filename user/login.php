@@ -108,12 +108,12 @@
 					<form action="checklogin.php" method="POST"  role="form">
 						<div class="form-group">
 							<label  for="">Email Addess <span style="color: red;">*</span>: </label>
-							<input type="email" class="form-control" id="email" name="email" onblur="checkEle(this);">
+							<input type="email" placeholder="example@gmail.com" class="form-control" id="email" name="email" onblur="checkEle(this);">
 							<p id="erremail"></p>
 						</div>
 						<div class="form-group">
 							<label  for="">Password <span style="color: red;">*</span>: </label>
-							<input type="password" class="form-control" id="password" name="pass" onblur="checkPas(this);">
+							<input type="password" value="password" class="form-control" id="password" name="pass" onblur="checkPas(this);">
 							<p id="errpass"></p>
 						</div>
 						<button type="submit" class="btn btn-info" name="login" value="login">Login</button>
