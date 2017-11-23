@@ -51,6 +51,9 @@
                 <?php 
                     } 
                 ?>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="../../index.php" aria-haspopup="true" aria-expanded="false">Home</a>
+                </li>
             </ul>
         </div>
     </nav>

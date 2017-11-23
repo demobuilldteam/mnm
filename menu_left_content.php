@@ -84,19 +84,20 @@
 	</div>
 	<div class="menu_left_bottom">
 		<h4>specials</h4>
+		<?php 
+			include ("connect.php");
+
+			$qr = "select * from product order by soluong DESC limit 2";
+			$rs = mysqli_query($conn,$qr);
+			while($row = mysqli_fetch_array($rs)){
+		?>
 		<div class="item_product">
-			<img src="images/iconmoto.png" alt="" width="100" height="50">
+			<img src="images/<?php echo $row['image']; ?>" alt="" width="100" height="50">
 			<div class="item_content">
-				<p>Produc's Name</p>
-				<p><strong>Price</strong></p>
+				<p><?php echo $row['ten'];?></p>
+				<p><strong><?php echo $row['gia'];?></strong></p>
 			</div>
 		</div>
-		<div class="item_product">
-			<img src="images/iconmoto.png" alt="" width="100" height="50">
-			<div class="item_content">
-				<p>Produc's Name</p>
-				<p><strong>Price</strong></p>
-			</div>
-		</div>
+		<?php } ?>
 	</div>
 </div>
