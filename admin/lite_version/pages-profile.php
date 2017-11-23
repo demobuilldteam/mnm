@@ -1,3 +1,4 @@
+<?php ob_start() ; ?>
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,12 +19,14 @@
     <link href="css/style.css" rel="stylesheet">
     <!-- You can change the theme colors from here -->
     <link href="css/colors/blue.css" id="theme" rel="stylesheet">
+    <link rel="stylesheet" href="css/button.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
+    
 </head>
 
 <body class="fix-header card-no-border">
@@ -43,15 +46,22 @@
                             <li class="breadcrumb-item active">Thông tin cá nhân</li>
                         </ol>
                     </div>
-                    <div class="col-md-6 col-4 align-self-center">
-                        <a href="https://wrappixel.com/templates/monsteradmin/" class="btn pull-right hidden-sm-down btn-success"> Upgrade to Pro</a>
-                    </div>
+                    
                 </div>
               
                 <div class="row">
+                    <?php if(isset($_SESSION['noti-update']) && !is_null($_SESSION['noti-update'])){ ?>
+                    <div class="col-md-12">
+                        <div class="alert alert-success">
+                            <?php $mes = $_SESSION['noti-update'];echo $mes; ?>
+                        </div>
+                    </div>
+                    <?php $_SESSION['noti-update']= NULL;}  ?>
+                </div>
+                
+                <div class="row">
                     <!-- Column -->
                     <?php 
-                        
                         include ("../../connect.php");
                         if(isset($_SESSION['rule'])){
                             $email = $_SESSION['email_address'];
@@ -65,6 +75,7 @@
                                 while($row = mysqli_fetch_array($result)){
 
                     ?>
+                    <!-- messages -->
                     <div class="col-lg-4 col-xlg-3 col-md-5">
                         <div class="card">
                             <div class="card-block">
@@ -89,43 +100,47 @@
                     <div class="col-lg-8 col-xlg-9 col-md-7">
                         <div class="card">
                             <div class="card-block">
-                                <form class="form-horizontal form-material">
+                                <form class="form-horizontal form-material" action="pages-profile.php" method="post">
                                     <div class="form-group">
                                         <label class="col-md-12">Họ và tên</label>
                                         <div class="col-md-12">
-                                            <input type="text" placeholder="<?php echo $row['fullname']; ?>" class="form-control form-control-line">
+                                            <input type="text" name="fullname"  value="<?php echo $row['fullname']; ?>" class="form-control form-control-line">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-12">Quê quán</label>
                                         <div class="col-md-12">
-                                            <input type="text" placeholder="<?php echo $row['address']; ?>" class="form-control form-control-line">
+                                            <input type="text" name="address" value="<?php echo $row['address']; ?>" class="form-control form-control-line">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-12">Công ty</label>
                                         <div class="col-md-12">
-                                            <input type="text" placeholder="<?php echo $row['company']; ?>" class="form-control form-control-line">
+                                            <input type="text" name="company" value="<?php echo $row['company']; ?>" class="form-control form-control-line">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="example-email" class="col-md-12">Email</label>
                                         <div class="col-md-12">
-                                            <input type="email" placeholder="<?php echo $row['email_address']; ?>" class="form-control form-control-line" name="example-email" id="example-email">
+                                            <input type="email" name="email" value="<?php echo $row['email_address']; ?>" class="form-control form-control-line" name="example-email" id="example-email">
+                                            <input type="hidden"  value="<?php echo $email; ?>" class="form-control form-control-line" name="email_old" >
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-12">Mật khẩu</label>
                                         <div class="col-md-12">
-                                            <input type="password" value="<?php echo $row['password']; ?>" class="form-control form-control-line">
+                                            <input type="password" name="password" value="<?php echo $row['password']; ?>" class="form-control form-control-line">
                                         </div>
                                     </div>
-                                    
-                                    
-                                    
+                                    <div class="form-group">
+                                        <label class="col-md-12">Hinh anh</label>
+                                        <div class="col-md-12">
+                                            <input type="file" name="hinhanh"  class="form-control form-control-line"><?php echo $row['image']; ?>
+                                        </div>
+                                    </div>
                                     <div class="form-group">
                                         <div class="col-sm-12">
-                                            <button class="btn btn-success">Update thông tin cá nhân</button>
+                                            <button type="submit" name="update" class="btn btn-success">Update thông tin cá nhân</button>
                                         </div>
                                     </div>
                                 </form>
@@ -136,6 +151,38 @@
                                 }
                             }
                         }
+                    ?>
+                    <?php 
+                    
+                    if(isset($_POST['update'])){
+                        $fullname = $_POST['fullname'];
+                        $address = $_POST['address'];
+                        $company = $_POST['company'];
+                        $email_address = $_POST['email'];
+                        $password = $_POST['password'];
+                        // $rule = $_POST['rule'];
+                        $email_old = $_POST['email_old'];
+
+                        $filename = $_FILES['hinhanh']['name'];
+                        // if(empty($_FILES) || !isset($_FILES['hinhanh'])){
+                        $file_tmp = $_FILES['hinhanh']['tmp_name'];
+                        move_uploaded_file($file_tmp,'../../images/'.$filename);
+                        if($filename == ""){
+                            $qrup = "update User set fullname='$fullname',address='$address',company='$company',email_address='$email_address',password='$password' where email_address='$email_old'";
+                            // echo $qrup;
+                        }else{
+                            $qrup = "update User set fullname='$fullname',address='$address',company='$company',email_address='$email_address',image='$filename',password='$password' where email_address='$email_old'";
+                        }
+                        
+                        if(mysqli_query($conn,$qrup)){
+                            $_SESSION['noti-update']= "You updated successful";
+                            $_SESSION['password']= NULL;
+                            $_SESSION['password'] = $password;
+                            header("location:pages-profile.php");
+                        }else{
+                            echo mysqli_errors($conn);
+                        }
+                    }
                     ?>
                     <!-- Column -->
                 </div>
@@ -166,3 +213,4 @@
 </body>
 
 </html>
+<?php ob_flush()  ; ?>

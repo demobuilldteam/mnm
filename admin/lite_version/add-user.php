@@ -16,6 +16,7 @@
     <link href="css/style.css" rel="stylesheet">
     <!-- You can change the theme colors from here -->
     <link href="css/colors/blue.css" id="theme" rel="stylesheet">
+    <link rel="stylesheet" href="css/button.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -39,7 +40,7 @@
             $qr = "insert into User(fullname,address,company,image,email_address,password,rule) values('$fullname','$address','$company','$filename','$email','$password','$rule')";
 
             if(mysqli_query($conn,$qr)){
-                $_SESSION['noti-add']= "You added successful";
+                $_SESSION['noti-update']= "You added successful";
                 header("location:table-user");    
             } else{
                 echo mysqli_error($conn);

@@ -1,9 +1,9 @@
 <?php 
 	include ("connect.php");
-	if(isset($_GET['maloais'])){
-		$maloai = $_GET['maloais'];
-
-		$qr = "select * from product where maloai='$maloai'";
+	if(isset($_GET['kieux'])){
+		$kieu = $_GET['kieux'];
+		$loai = $_GET['loaix'];
+		$qr = "select * from product where maloai = '$loai' and kieu like '%$kieu%'";
 
 		$rs = mysqli_query($conn,$qr);
 		while($row = mysqli_fetch_array($rs)){

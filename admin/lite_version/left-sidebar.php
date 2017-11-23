@@ -74,15 +74,11 @@
                 <li>
                     <a href="table-product.php" class="waves-effect"><i class="fa fa-product-hunt m-r-10" aria-hidden="true"></i>Product</a>
                 </li>
-                <li>
-                    <a href="pages-blank.html" class="waves-effect"><i class="fa fa-columns m-r-10" aria-hidden="true"></i>Blank Page</a>
-                </li>
-                <li>
-                    <a href="pages-error-404.html" class="waves-effect"><i class="fa fa-info-circle m-r-10" aria-hidden="true"></i>Error 404</a>
-                </li>
+                
+               
             </ul>
             <div class="text-center m-t-30">
-                <a href="https://wrappixel.com/templates/monsteradmin/" class="btn btn-danger"> Upgrade to Pro</a>
+                <a href="pages-profile.php" class="btn btn-danger"> Upgrade to Pro</a>
             </div>
         </nav>
         <!-- End Sidebar navigation -->

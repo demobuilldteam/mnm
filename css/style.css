@@ -3,11 +3,41 @@
     padding: 0px;   
 }
 
-.infor p {
-    max-height: 30px;
-    overflow: hidden;
+.imageinfo img {
+    transition: 0.4s;
+    box-shadow: 3px 5px 1px grey;
 }
 
+.imageinfo img:hover {
+    transform: scale(1.06);
+    border: 4px solid #a29999;
+    border-radius: 14px;
+    box-shadow: none;
+}
+
+.imageinfo {
+    text-align: center;
+}
+
+
+p#mota_infor {
+    color: gray;
+    margin-bottom: 17px;
+}
+
+.infop h5 {
+    margin: 0px;
+    height: 50px;
+    font-size: 20px;
+    color: #9a2927;
+    font-weight: bold;
+    font-family: sans-serif;
+    text-transform: uppercase;
+}
+.mota {
+    height: 95px;
+    overflow: hidden;
+}
 .contect .us {
     width: 100%;
     height: 90px;
@@ -110,8 +140,9 @@ button.btn.btn-info {
 
 .info_product {
     padding: 20px;
-    max-height: 109px;
+    max-height: 164px;
     overflow: hidden;
+    margin-bottom: 15px;
 }
 i.fa.fa-chevron-up.fa-2x {
     color: white;
@@ -289,8 +320,9 @@ button#dropdownMenu1 {
 
 .item_new {
     border-right: 1px solid #dedddd;
-    max-height: 400px;
-    /* overflow: hidden; */
+    height: 475px;
+    overflow: hidden;
+    border-bottom: 1px solid #dedddd;
 }
 .alll{
     border:none;
@@ -484,6 +516,12 @@ ul.menu_sub {
     list-style: none;
     height: 35px;
     padding-left: 21px;
+    transition: 0.4s;
+    text-transform: uppercase;
+}
+
+.menu_left_top ul li:hover {
+    color: #992926;
 }
 
 menu_left_top ul.menu_sub {
@@ -530,7 +568,7 @@ i.fa.fa-angle-double-right:hover{
     margin-left: 8px;
     border-left: 4px solid #9a2927;
     transition: 0.4s;
-    font-family: helvetica;
+    font-family: arial;
     font-weight: bold;
     box-sizing: border-box;
 }

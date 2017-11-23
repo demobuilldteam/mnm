@@ -17,6 +17,7 @@
     <link href="css/style.css" rel="stylesheet">
     <!-- You can change the theme colors from here -->
     <link href="css/colors/blue.css" id="theme" rel="stylesheet">
+    <link rel="stylesheet" href="css/button.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -62,35 +63,14 @@
                 </div>
                 <div class="row">
                     <?php
-                    if(isset($_SESSION['noti-update'])) {
+                    if(isset($_SESSION['noti-update']) && !is_null($_SESSION['noti-update'])) {
                     ?>
-                    <div class="alert alert-success">
-                       <?php echo $_SESSION['noti-update']; ?>
-                    </div>
-                    <?php session_destroy();} ?>
-                </div>
-
-                <div class="row">
                     <div class="col-md-12">
-                        <?php
-                        if(isset($_SESSION['noti-delete'])) {
-                        ?>
                         <div class="alert alert-success">
-                           <?php echo $_SESSION['noti-delete']; ?>
+                           <?php echo $_SESSION['noti-update']; ?>
                         </div>
-                        <?php session_destroy();} ?>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <?php
-                        if(isset($_SESSION['noti-add'])) {
-                        ?>
-                        <div class="alert alert-success">
-                           <?php echo $_SESSION['noti-add']; ?>
-                        </div>
-                        <?php session_destroy();} ?>
-                    </div>
+                    <?php $_SESSION['noti-update']= NULL;}  ?>
                 </div>
                 <div class="row">
                     <!-- column -->

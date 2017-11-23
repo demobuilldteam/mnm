@@ -16,6 +16,7 @@
     <link href="css/style.css" rel="stylesheet">
     <!-- You can change the theme colors from here -->
     <link href="css/colors/blue.css" id="theme" rel="stylesheet">
+    <link rel="stylesheet" href="css/button.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -57,8 +58,11 @@
             $filetmp = $_FILES['hinhanh']['tmp_name'];
             move_uploaded_file($filetmp, "../../images/".$filename);
 
-            $qr = "update product set ten='$ten', mota='$mota', soluong='$soluong', gia='$gia', maloai='$maloai', created='$thoigian', image='$filename' where id='$id'";
-            
+            if($filename == ""){
+                $qr = "update product set ten='$ten', mota='$mota', soluong='$soluong', gia='$gia', maloai='$maloai', created='$thoigian' where id='$id'";
+            }else{
+                $qr = "update product set ten='$ten', mota='$mota', soluong='$soluong', gia='$gia', maloai='$maloai', created='$thoigian', image='$filename' where id='$id'";
+            }
             if(mysqli_query($conn,$qr)){
                 $_SESSION['noti-err-pr']= "You updated successful";
                 header("location:table-product.php"); 

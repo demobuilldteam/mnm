@@ -7,7 +7,7 @@
 		$qr = "delete from User where email_address='$email_address' and password='$password'";
 		// echo $qr;
 		if(mysqli_query($conn,$qr)){
-			$_SESSION['noti-delete'] = "You deleted succesful";
+			$_SESSION['noti-update'] = "You deleted succesful";
 			header("location:table-user.php");
 		}
 		else{

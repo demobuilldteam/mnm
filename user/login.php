@@ -75,8 +75,8 @@
 					<div class="list_menu">
 						<ul>
 							<li><a href="" id="">my account</a></li>
-							<li><a href="" id="">Login</a></li>
-							<li><a href="" id="">sign up</a></li>
+							<li><a href="login.php" id="">Login</a></li>
+							<li><a href="signup.php" id="">sign up</a></li>
 						</ul>
 					</div>
 				</div>

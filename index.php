@@ -14,17 +14,29 @@
 	<script src="js/jquery.min.js"></script>
 	<script src="js/index.js"></script>
 	<script>
-		$(document).ready(function($) {
-			$('.title').click(function(event) {
-				var maloai = $(this).attr('loai');
-				// alert(gender);
+			$(document).ready(function($) {
+				$('.title').click(function(event) {
+					var maloai = $(this).attr('loai');
+					// alert(gender);
+					$.get("xuly.php",{maloais: maloai},function(data){
+						$('.add_p').html(data);
+						// alert(data);
+					});
+				});
+				$('.sub_item').click(function(event) {
+					var conditions = $(this).attr('ten');
 
-				$.get("xuly.php",{maloais: maloai},function(data){
-					$('.add_p').html(data);
-					// alert(data);
+					var arr = conditions.split('-');
+					var kieu = arr[0];
+					var loai = arr[1];
+					// alert(kieu+loai);
+					$.get("xulyloai.php",{kieux: kieu,loaix: loai},function(data){
+						// alert(data);
+						$('.add_p').html(data);
+					});
+
 				});
 			});
-		});
 	</script>
 </head>
 <body>
@@ -121,11 +133,11 @@
 										</div>
 										<div class="info_product">
 											<p><span><?php echo $row['gia']; ?></span></p>
-											<p><?php echo $row['mota']; ?></p>
+											<p class="mota"><?php echo $row['mota']; ?></p>
 										</div>
 										<div class="button">
 											<div class="add_card">
-												add to cart
+												<a href="info_product.php?id=<?php echo $ro['id']; ?>" style="text-decoration: none;color: white;">add to cart</a>
 											</div>
 											<div class="detail"><i class="fa fa-info" aria-hidden="true"></i></div>
 										</div>
@@ -141,70 +153,77 @@
 						<h4>New Product</h4>
 						<div class="row">
 							<div class="add_p">
-								<div class="col-md-3 col-xs-12 col-sm-6 item_new">
-									<h5>product's name</h5>
-									<div class="image">
-										<img src="images/iconmoto.png" class="image_new" alt="" width="150" height="150">
-									</div>
-									<div class="info_product">
-										<p><span>price</span></p>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum quibusdam fugiat tenetur perspiciatis</p>
-									</div>
-									<div class="button">
-										<div class="add_card">
-											add to cart
+								<?php 
+									include ("connect.php");
+									$sql = "select * from product order by created DESC,ten ASC limit 4";
+									$result = mysqli_query($conn,$sql);
+									while($ro = mysqli_fetch_array($result)){
+
+								?>
+									<div class="col-md-3 col-xs-12 col-sm-6 item_new">
+										
+										<div class="image">
+											<img src="images/<?php echo $ro['image']; ?>" class="image_new" alt="" width="150" height="150">
 										</div>
-										<div class="detail"><i class="fa fa-info" aria-hidden="true"></i></div>
-									</div>
-								</div>
-								<div class="col-md-3 col-xs-12 col-sm-6 item_new">
-									<h5>product's name</h5>
-									<div class="image">
-										<img src="images/iconmoto.png" class="image_new" alt="" width="150" height="150">
-									</div>
-									<div class="info_product">
-										<p><span>price</span></p>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum quibusdam fugiat tenetur perspiciatis</p>
-									</div>
-									<div class="button">
-										<div class="add_card">
-											add to cart
+										<h5><?php echo $ro['ten']; ?></h5>
+										<div class="info_product">
+											
+											<p class="mota"><?php echo $ro['mota']; ?></p>
+											<p><span>
+												<?php 
+													$english_format_number = number_format($ro['gia']);
+													echo $english_format_number; 
+													?>
+											VND</span></p>
 										</div>
-										<div class="detail"><i class="fa fa-info" aria-hidden="true"></i></div>
-									</div>
-								</div>
-								<div class="col-md-3 col-xs-12 col-sm-6 item_new">
-									<h5>product's name</h5>
-									<div class="image">
-										<img src="images/iconmoto.png" class="image_new" alt="" width="150" height="150">
-									</div>
-									<div class="info_product">
-										<p><span>price</span></p>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum quibusdam fugiat tenetur perspiciatis</p>
-									</div>
-									<div class="button">
-										<div class="add_card">
-											add to cart
+										<div class="button">
+											<div class="add_card">
+												<a href="info_product.php?id=<?php echo $ro['id']; ?>" style="text-decoration: none;color: white;">add to cart</a>
+											</div>
+											<div class="detail"><i class="fa fa-info" aria-hidden="true"></i></div>
 										</div>
-										<div class="detail"><i class="fa fa-info" aria-hidden="true"></i></div>
 									</div>
-								</div>
-								<div class="col-md-3 col-xs-12 col-sm-6 item_new">
-									<h5>product's name</h5>
-									<div class="image">
-										<img src="images/iconmoto.png" class="image_new" alt="" width="150" height="150">
-									</div>
-									<div class="info_product">
-										<p><span>price</span></p>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum quibusdam fugiat tenetur perspiciatis</p>
-									</div>
-									<div class="button">
-										<div class="add_card">
-											add to cart
+								<?php 
+									}
+								 ?>
+							</div>
+						</div>
+						<div class="new_product">
+							<h4>featured products</h4>
+							<div class="row">
+								<?php 
+									include ("connect.php");
+									$sql = "select * from product order by gia ASC,ten ASC limit 4";
+									$result = mysqli_query($conn,$sql);
+									while($ro = mysqli_fetch_array($result)){
+
+								?>
+									<div class="col-md-3 col-xs-12 col-sm-6 item_new">
+										
+										<div class="image">
+											<img src="images/<?php echo $ro['image']; ?>" class="image_new" alt="" width="150" height="150">
 										</div>
-										<div class="detail"><i class="fa fa-info" aria-hidden="true"></i></div>
+										<h5><?php echo $ro['ten']; ?></h5>
+										<div class="info_product">
+											
+											<p class="mota"><?php echo $ro['mota']; ?></p>
+											<p><span>
+												<?php 
+													$english_format_number = number_format($ro['gia']);
+													echo $english_format_number; 
+													?>
+											VND</span></p>
+										</div>
+										<div class="button">
+											<div class="add_card">
+												<a href="info_product.php?id=<?php echo $ro['id']; ?>" style="text-decoration: none;color: white;">add to cart</a>
+											</div>
+											<div class="detail"><i class="fa fa-info" aria-hidden="true"></i></div>
+										</div>
 									</div>
-								</div>
+								<?php 
+									}
+								 ?>
 							</div>
 						</div>
 					<?php 	
@@ -212,75 +231,6 @@
 					 ?>
 				</div>
 				<!-- list FEATURED PRODUCTS -->
-				<div class="new_product">
-					<h4>featured products</h4>
-					<div class="row">
-						<div class="col-md-3 col-xs-12 col-sm-6 item_new">
-							<h5>product's name</h5>
-							<div class="image">
-								<img src="images/iconmoto.png" class="image_new" alt="" width="150" height="150">
-							</div>
-							<div class="info_product">
-								<p><span>price</span></p>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum quibusdam fugiat tenetur perspiciatis</p>
-							</div>
-							<div class="button">
-								<div class="add_card">
-									add to cart
-								</div>
-								<div class="detail"><i class="fa fa-info" aria-hidden="true"></i></div>
-							</div>
-						</div>
-						<div class="col-md-3 col-xs-12 col-sm-6 item_new">
-							<h5>product's name</h5>
-							<div class="image">
-								<img src="images/iconmoto.png" class="image_new" alt="" width="150" height="150">
-							</div>
-							<div class="info_product">
-								<p><span>price</span></p>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum quibusdam fugiat tenetur perspiciatis</p>
-							</div>
-							<div class="button">
-								<div class="add_card">
-									add to cart
-								</div>
-								<div class="detail"><i class="fa fa-info" aria-hidden="true"></i></div>
-							</div>
-						</div>
-						<div class="col-md-3 col-xs-12 col-sm-6 item_new">
-							<h5>product's name</h5>
-							<div class="image">
-								<img src="images/iconmoto.png" class="image_new" alt="" width="150" height="150">
-							</div>
-							<div class="info_product">
-								<p><span>price</span></p>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum quibusdam fugiat tenetur perspiciatis</p>
-							</div>
-							<div class="button">
-								<div class="add_card">
-									add to cart
-								</div>
-								<div class="detail"><i class="fa fa-info" aria-hidden="true"></i></div>
-							</div>
-						</div>
-						<div class="col-md-3 col-xs-12 col-sm-6 item_new">
-							<h5>product's name</h5>
-							<div class="image">
-								<img src="images/iconmoto.png" class="image_new" alt="" width="150" height="150">
-							</div>
-							<div class="info_product">
-								<p><span>price</span></p>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum quibusdam fugiat tenetur perspiciatis</p>
-							</div>
-							<div class="button">
-								<div class="add_card">
-									add to cart
-								</div>
-								<div class="detail"><i class="fa fa-info" aria-hidden="true"></i></div>
-							</div>
-						</div>
-					</div>
-				</div>
 				
 		    </div>  
 		</div>
