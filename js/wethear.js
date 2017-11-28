@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	$('#show_wethear').click(function(event) {
 		/* Act on the event */
-		var city = ('#city').val();
+		var city = $('#city').val();
 		if(city != ' '){
 			$.$.ajax({
 				url: 'http://api.openweathermap.org/data/2.5/weather?q=' + city+ '&&appid=b1b15e88fa797225412429c1c50c122a1',
