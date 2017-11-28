@@ -237,5 +237,6 @@
 	</div>
 	<?php include 'foot.php' ?>
 	<div class="back_top"><i class="fa fa-chevron-up fa-2x" aria-hidden="true"></i></div>
+	<script src="js/wethear.js"></script>
 </body>
 </html>

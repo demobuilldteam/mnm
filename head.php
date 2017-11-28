@@ -75,4 +75,3 @@
 		</div>
 	</div>
 </div>	
-<script src="js/wethear.js"></script>
