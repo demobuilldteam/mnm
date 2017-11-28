@@ -62,5 +62,15 @@
 				</div>
 			</div>
 		</div>
+		<div class="row">
+			<div class="form-group">
+			    <input id="city" type="text" class="form-control" placeholder="input city's name">
+			    <span style="color:red;" id="error_city"></span>
+				<div class="col-sm-5 col-sm-offset-2">
+					<button type="submit" id="show_wethear" class="btn btn-primary">Shows</button>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>	
+<script src="js/wethear.js"></script>
