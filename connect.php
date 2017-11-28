@@ -1,9 +1,9 @@
 <?php
-	$username = "root";
-	$password = "vovanquang";
-	$servername ="localhost";
+	$username = "sql12207584";
+	$password = "KzyYpsTKu2";
+	$servername ="sql12.freemysqlhosting.net";
 
-	$dbname = "shopmotor";
+	$dbname = "sql12207584";
 	$conn = mysqli_connect($servername,$username,$password,$dbname);
 	mysqli_set_charset($conn, 'utf8');
 	if(!$conn){
