@@ -23,7 +23,7 @@ load_index = function(city){
 
 		},
 		complete:function(xhr,statusText){
-			alert(xhr.status);
+			//alert(xhr.status);
 		}
 	});
 }
