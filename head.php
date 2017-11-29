@@ -61,15 +61,22 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="row" style="margin-bottom: 20px; ">
-			<div class="form-group">
-			    <div class="col-md-6">
-			    	<input id="city" type="text" class="form-control" placeholder="input city's name">
-			    	<span style="color:red;" id="error_city"></span>
-			    </div>
-				<div class="col-md-6 ">
-					<button type="submit" id="show_wethear" class="btn btn-primary">Shows</button>
+			<div class="wethear">
+					<div class="form-group">
+					    <div class="col-md-6">
+					    	<div class="row">
+					    		<input id="city" type="text" class="form-control" placeholder="Enter your city's name!">
+					    	</div>
+					    	<span style="color:red;" id="error_city"></span>
+							<div class="row">
+								<button type="submit" id="show_wethear" style="width:300px;margin: 0px auto;margin-left:10%;" class="btn btn-primary">View wethear</button>
+							</div>
+					    </div>
+					</div>
+					
+					<div class="rowdata col-md-6" style="padding-left: 10%;">
+						
+					</div>
 				</div>
 			</div>
 		</div>
