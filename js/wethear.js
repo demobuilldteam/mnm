@@ -9,9 +9,9 @@ $(document).ready(function() {
 
 load_index = function(city){
 	if (city != '') {
-		url = 'http://api.openweathermap.org/data/2.5/weather?q='+city+'&mode=html&appid=75fd472d6b3b460d6dc67202c44bbca7';
+		url = 'https://api.openweathermap.org/data/2.5/weather?q='+city+'&mode=html&appid=75fd472d6b3b460d6dc67202c44bbca7';
 	}else{
-		url = 'http://api.openweathermap.org/data/2.5/weather?q=London&mode=html&appid=75fd472d6b3b460d6dc67202c44bbca7';
+		url = 'https://api.openweathermap.org/data/2.5/weather?q=London&mode=html&appid=75fd472d6b3b460d6dc67202c44bbca7';
 	}
 	$.ajax({
 		url: url,
