@@ -19,8 +19,11 @@ load_index = function(city){
 		dataType: 'html',
 		success: function(data){
 			// console.log(data.weather[0].description);
-			$('.rowdata').html(data);
+			alert('successful');
 
+		}
+		complete:function(data){
+			$('.rowdata').html(data);
 		}
 	});
 }
