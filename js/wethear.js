@@ -21,7 +21,7 @@ load_index = function(city){
 			// console.log(data.weather[0].description);
 			alert('successful');
 
-		}
+		},
 		complete:function(data){
 			$('.rowdata').html(data);
 		}
