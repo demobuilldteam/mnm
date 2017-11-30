@@ -2,7 +2,16 @@
     margin: 0px;
     padding: 0px;   
 }
-
+.contentmap{
+    width: 100px;
+    height: 400px;
+    background: #848484;
+}
+.contentmap #map{
+    width: 70%;
+    height: 400px;
+    margin: 20px auto;
+}
 .wethear{
     width: 1000px;
     margin: 0px auto;
