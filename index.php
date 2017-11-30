@@ -238,5 +238,24 @@
 	<?php include 'foot.php' ?>
 	<div class="back_top"><i class="fa fa-chevron-up fa-2x" aria-hidden="true"></i></div>
 	<script src="js/wethear.js"></script>
+
+	<script>
+		function myMap() {
+		  var myCenter = new google.maps.LatLng(16.054407,108.202167);
+		  var mapCanvas = document.getElementById("map");
+		  var mapOptions = {center: myCenter, zoom: 5};
+		  var map = new google.maps.Map(mapCanvas, mapOptions);
+		  var marker = new google.maps.Marker({position:myCenter});
+		  marker.setMap(map);
+
+		  // Zoom to 9 when clicking on marker
+		  google.maps.event.addListener(marker,'click',function() {
+		    map.setZoom(9);
+		    map.setCenter(marker.getPosition());
+		  });
+		}
+	</script>
+
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdqeyJvbK_rJsHrA1HdnmGwUA6i1si1CA=moto-shop"></script>
 </body>
 </html>
