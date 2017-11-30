@@ -1,8 +1,6 @@
 <div class="footer">
 	<div class="container">
-		<div class="contentmap">
-			<div id="map" style="width:80%;height:400px"></div>
-		</div>
+		<div id="map"></div>
 		</div>
 		<div class="info">
 			<div class="row">
