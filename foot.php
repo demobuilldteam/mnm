@@ -65,4 +65,4 @@ function myMap() {
 }
 </script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdqeyJvbK_rJsHrA1HdnmGwUA6i1si1CA=moto-shop"></script>
