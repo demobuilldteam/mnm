@@ -4,13 +4,15 @@
 }
 .contentmap{
     width: 100%;
-    height: 400px;
-    background: #848484;
+    height: 440px;
+    background: #e4eae1;
+    padding: 20px 0px;
+    box-sizing: border-box;
 }
 .contentmap #map{
     width: 70%;
     height: 400px;
-    margin: 20px auto;
+    /*margin: 20px auto;*/
 }
 .wethear{
     width: 1000px;
