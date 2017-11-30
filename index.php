@@ -256,7 +256,7 @@
 		}
 	</script>
 
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-PVEwxvxIPSiiHzvGt0isp460L9qH1Ro&callback=initMap"
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-PVEwxvxIPSiiHzvGt0isp460L9qH1Ro=moto-shop"
   type="text/javascript"></script>
 </body>
 </html>
