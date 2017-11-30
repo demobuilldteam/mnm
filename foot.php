@@ -1,6 +1,6 @@
 <div class="footer">
 	<div class="container">
-		<div id="map"></div>
+		<div id="map" style="width: 70%;height: 400px;margin: 20px auto;"></div>
 		</div>
 		<div class="info">
 			<div class="row">
