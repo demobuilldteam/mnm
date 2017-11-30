@@ -256,6 +256,7 @@
 		}
 	</script>
 
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdqeyJvbK_rJsHrA1HdnmGwUA6i1si1CA=moto-shop"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-PVEwxvxIPSiiHzvGt0isp460L9qH1Ro&callback=initMap"
+  type="text/javascript"></script>
 </body>
 </html>
