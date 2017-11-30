@@ -1,7 +1,7 @@
 <div class="footer">
 	<div class="container">
-		<div id="map" style="width: 70%;height: 400px;margin: 20px auto;"></div>
-		</div>
+		<!-- <div id="map" style="width: 70%;height: 400px;margin: 20px auto;"></div>
+		</div> -->
 		<div class="info">
 			<div class="row">
 				<div class="col-md-3 col-xs-12 col-sm-6 colu">
