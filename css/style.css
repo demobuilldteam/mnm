@@ -2,6 +2,13 @@
     margin: 0px;
     padding: 0px;   
 }
+.share_fb {
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    top: 11%;
+    right: 4%;
+}
 .contentmap{
     width: 100%;
     height: 440px;

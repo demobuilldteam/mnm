@@ -241,6 +241,9 @@
 	</div>
 	<?php include 'foot.php' ?>
 	<div class="back_top"><i class="fa fa-chevron-up fa-2x" aria-hidden="true"></i></div>
+	<div class="share_fb">
+		<iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fmoto-shop.herokuapp.com%2F&layout=button_count&size=large&mobile_iframe=true&appId=220379985135243&width=95&height=28" width="95" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+	</div>
 	<script src="js/wethear.js"></script>
 
 	<script>
