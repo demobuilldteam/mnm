@@ -248,14 +248,14 @@
 		function myMap() {
 		  var myCenter = new google.maps.LatLng(16.054407,108.202167);
 		  var mapCanvas = document.getElementById("map");
-		  var mapOptions = {center: myCenter, zoom: 12};
+		  var mapOptions = {center: myCenter, zoom: 14};
 		  var map = new google.maps.Map(mapCanvas, mapOptions);
 		  var marker = new google.maps.Marker({position:myCenter});
 		  marker.setMap(map);
 
 		  // Zoom to 9 when clicking on marker
 		  google.maps.event.addListener(marker,'click',function() {
-		    map.setZoom(12);
+		    map.setZoom(14);
 		    map.setCenter(marker.getPosition());
 		  });
 		}
