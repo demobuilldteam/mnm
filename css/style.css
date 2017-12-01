@@ -9,21 +9,30 @@
     top: 11%;
     right: 4%;
 }
-.contentmap{
+.container .contentmap{
     width: 100%;
-    height: 440px;
-    background: #e4eae1;
+    height: 290px;
+    background: white;
     padding: 20px 0px;
     box-sizing: border-box;
 }
 .contentmap #map{
-    width: 70%;
-    height: 400px;
+    width: 50%;
+    height: 250px;
     margin: 0px auto;
 }
+.wethear h4 {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background: whitesmoke;
+}
 .wethear{
-    width: 1000px;
+    width: 100%;
     margin: 0px auto;
+    border: 1px solid #e6dddd;
+    padding: 10px;
 }
 .imageinfo img {
     transition: 0.4s;

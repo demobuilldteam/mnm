@@ -235,9 +235,7 @@
 		    </div>  
 		</div>
 	</div>
-	<div class="contentmap">
-		<div id="map"></div>
-	</div>
+	
 	</div>
 	<?php include 'foot.php' ?>
 	<div class="back_top"><i class="fa fa-chevron-up fa-2x" aria-hidden="true"></i></div>
@@ -250,14 +248,14 @@
 		function myMap() {
 		  var myCenter = new google.maps.LatLng(16.054407,108.202167);
 		  var mapCanvas = document.getElementById("map");
-		  var mapOptions = {center: myCenter, zoom: 5};
+		  var mapOptions = {center: myCenter, zoom: 12};
 		  var map = new google.maps.Map(mapCanvas, mapOptions);
 		  var marker = new google.maps.Marker({position:myCenter});
 		  marker.setMap(map);
 
 		  // Zoom to 9 when clicking on marker
 		  google.maps.event.addListener(marker,'click',function() {
-		    map.setZoom(9);
+		    map.setZoom(12);
 		    map.setCenter(marker.getPosition());
 		  });
 		}
