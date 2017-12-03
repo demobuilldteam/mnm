@@ -61,7 +61,7 @@
 									echo $english_format_number; 
 									?>
 							VND</span></p>
-							<p>Số lượng: <?php echo $ro['soluong']; ?></p>
+							<!-- <p>Số lượng: <?php echo $ro['soluong']; ?></p> -->
 							<p>Kiễu: <?php echo $ro['kieu']; ?></p>
 							<div class="button" style="width: 50%;">
 								<div class="add_card">
