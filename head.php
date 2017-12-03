@@ -48,8 +48,8 @@
 					</form>
 				</div>
 				<div class="col-xs-12 col-sm-4 col-md-4 shop">
-					<i class="fa fa-shopping-cart fa-3x " aria-hidden="true"></i>
-					<h4>shopping cart: </h4>
+					<a href="listcart.php"><i class="fa fa-shopping-cart fa-3x " aria-hidden="true"></i></a>
+					<!-- <h4>shopping cart: </h4> -->
 					<i class="fa fa-bars ccc" aria-hidden="true">
 					</i>
 					<div class="list_menu">

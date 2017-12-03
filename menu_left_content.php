@@ -95,7 +95,12 @@
 			<img src="images/<?php echo $row['image']; ?>" alt="" width="100" height="50">
 			<div class="item_content">
 				<p><?php echo $row['ten'];?></p>
-				<p><strong><?php echo $row['gia'];?></strong></p>
+				<p><span>
+					<?php 
+						$english_format_number = number_format($row['gia']);
+						echo $english_format_number; 
+						?>
+				VND</span></p>
 			</div>
 		</div>
 		<?php } ?>

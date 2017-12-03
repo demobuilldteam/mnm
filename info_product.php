@@ -13,33 +13,16 @@
 	
 	<script src="js/jquery.min.js"></script>
 	<script src="js/index.js"></script>
-	<script>
-			$(document).ready(function($) {
-				$('.title').click(function(event) {
-					var maloai = $(this).attr('loai');
-					// alert(gender);
-					$.get("xuly.php",{maloais: maloai},function(data){
-						$('.add_p').html(data);
-						// alert(data);
-					});
-				});
-				$('.sub_item').click(function(event) {
-					var conditions = $(this).attr('ten');
-
-					var arr = conditions.split('-');
-					var kieu = arr[0];
-					var loai = arr[1];
-					// alert(kieu+loai);
-					$.get("xulyloai.php",{kieux: kieu,loaix: loai},function(data){
-						// alert(data);
-						$('.add_p').html(data);
-					});
-
-				});
-			});
-	</script>
 </head>
 <body>
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.11&appId=220379985135243';
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
 	<!-- head -->
 	<?php include 'head.php' ?>
 	<!-- content -->
@@ -61,7 +44,7 @@
 						}
 						$result = mysqli_query($conn,$sql);
 						while($ro = mysqli_fetch_array($result)){
-
+								$_SESSION['maloai'] = $ro['maloai'];
 					?>
 						<div class="col-md-4 col-xs-12 col-sm-4">
 							
@@ -82,7 +65,7 @@
 							<p>Kiễu: <?php echo $ro['kieu']; ?></p>
 							<div class="button" style="width: 50%;">
 								<div class="add_card">
-									<a href="info_product.php?id=<?php echo $ro['id']; ?>" style="text-decoration: none;color: white;">add to cart</a>
+									<a href="addcart.php?id=<?php echo $ro['id']; ?>" style="text-decoration: none;color: white;">add to cart</a>
 								</div>
 							</div>
 						</div>
@@ -90,6 +73,50 @@
 						}
 					 ?>
 						
+					</div>
+					<!-- commet fb-->
+					<div class="row">
+						<div class="col-md-8 col-md-offset-4">
+							<div class="fb-comments" data-href="http://localhost/mnm/info_product.php" data-numposts="8"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container">
+				<div class="suggest">
+					<div class="row">
+						<?php if(isset($_SESSION['maloai'])){?>
+						<h4>That's is suggest for you</h4>
+						<?php 
+							$maloai = $_SESSION['maloai'];
+							$qr = "select * from product where maloai='$maloai' limit 7";
+							$rs = mysqli_query($conn,$qr);
+							while($ro = mysqli_fetch_array($rs)){
+						?>
+						<div class="col-md-3 col-xs-12 col-sm-6 item_new">		
+							<div class="image">
+								<img src="images/<?php echo $ro['image']; ?>" class="image_new" alt="" width="150" height="150">
+							</div>
+							<h5><?php echo $ro['ten']; ?></h5>
+							<div class="info_product">
+								
+								<p class="mota"><?php echo $ro['mota']; ?></p>
+								<p><span>
+									<?php 
+										$english_format_number = number_format($ro['gia']);
+										echo $english_format_number; 
+										?>
+								VND</span></p>
+							</div>
+							<div class="button">
+								<div class="add_card">
+									<a href="info_product.php?id=<?php echo $ro['id']; ?>" style="text-decoration: none;color: white;">add to cart</a>
+								</div>
+								<div class="detail"><i class="fa fa-info" aria-hidden="true"></i></div>
+							</div>
+					</div>
+
+					<?php }} ?>
 					</div>
 				</div>
 			</div>

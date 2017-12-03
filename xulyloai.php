@@ -3,6 +3,7 @@
 	if(isset($_GET['kieux'])){
 		$kieu = $_GET['kieux'];
 		$loai = $_GET['loaix'];
+		$_SESSION['laoi'] = $loai;
 		$qr = "select * from product where maloai = '$loai' and kieu like '%$kieu%'";
 
 		$rs = mysqli_query($conn,$qr);

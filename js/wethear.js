@@ -25,6 +25,8 @@ load_index = function(city){
 		complete:function(xhr,statusText){
 			if(xhr.status != 200){
 				$('#error_city').text("Your city not found!");
+			}else{
+				$('#error_city').text("");
 			}
 		}
 	});

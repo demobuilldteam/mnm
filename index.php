@@ -41,7 +41,9 @@
 </head>
 <body>
 	<!-- head -->
-	 <?php include 'head.php' ?> 
+	 <?php include 'head.php' 
+
+	 ?> 
 
 	<!-- content -->
 	<div class="content">
@@ -108,6 +110,7 @@
 				<div class="new_product">
 					
 					<?php 
+						$_SESSION['loai'] = NULL;
 						include ("connect.php");
 						$ten = "";
 						// $demo ="";
@@ -188,6 +191,7 @@
 								 ?>
 							</div>
 						</div>
+						<?php if($_SESSION['loai'] == NULL) {?>
 						<div class="new_product">
 							<h4>featured products</h4>
 							<div class="row">
@@ -226,6 +230,7 @@
 								 ?>
 							</div>
 						</div>
+						<?php } ?>
 					<?php 	
 						}
 					 ?>
