@@ -19,5 +19,7 @@
 	if(!$conn){
 		die("không thể kết nối..".mysqli_connect_error());
 	}
+
+	
 	
 ?>
