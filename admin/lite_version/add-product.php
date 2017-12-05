@@ -154,7 +154,7 @@
                 </div>
             </div>
             <footer class="footer text-center">
-                <p>Copyright&copy; Frteam | MNM | 2017</p>
+                <p>&copy;Copyright Frteam | MNM | 2017</p>
             </footer>
         </div>
     </div>

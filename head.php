@@ -7,29 +7,27 @@
 					<li><a href="index.php" >home</a></li>
 					<li><a href="newproduct.php" id="new">new products</a></li>
 					<li><a href="allproduct.php" id="all">all products</a></li>
-					<li><a href="special.php" id="specials">specials</a></li>
 					<li><a href="contact.php" id="contact">contacts</a></li>
-					<li><a href="#" id="review">reviews</a></li>
 				</ul>
 			</div>
-			<?php 
+			<?php
 				if(isset($_SESSION['fullname'])){
-					
+
 			?>
 				<div class="menu_right">
 					<ul>
 						<li><a href="#"><i class="fa fa-user" aria-hidden="true"></i><?php echo $_SESSION['fullname']; ?></a></li>
-						<li><a href="user/logout.php"><?php echo "Log out"; ?></a></li>
-						<?php 
+						<li><a href="user/logout.php">Log out</a></li>
+						<?php
 							if(isset($_SESSION['rule'])){
 						?>
-						<li><a href="admin/lite_version/pages-profile.php"><?php echo "Admin"; ?></a></li>
+						<li><a href="admin/lite_version/pages-profile.php">Admin</a></li>
 						<?php } ?>
 					</ul>
 				</div>
 			<?php
 				}
-			?>	
+			?>
 		</div>
 	</div>
 	<div class="banner">
@@ -61,7 +59,7 @@
 					</div>
 				</div>
 			</div>
-			
+
 		</div>
 	</div>
-</div>	
+</div>

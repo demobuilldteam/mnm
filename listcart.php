@@ -39,6 +39,7 @@
 				}
 				$listid = trim($listid,",");
 				// echo $listid;
+				$_SESSION['listid'] = $listid;
 				$qr = "select * from product where id in ($listid)";
 				$rs = mysqli_query($conn,$qr);
 				
@@ -66,6 +67,11 @@
 							$id = $row['id'];
 							$price = number_format($row['gia']);
 							$sl = $_SESSION['cart'][$id];
+							$qrc = "select soluong  from product where id = $id";
+							$rsc = mysqli_query($conn,$qrc);
+							while($r = mysqli_fetch_array($rsc)){
+								$slc = $r['soluong'];
+							}
 					?>
 						<tr>
 							<td><?php echo $i ?></td>
@@ -73,7 +79,7 @@
 							<td><?php echo $row['ten']; ?></td>
 							<td><?php echo $price; ?></td>
 							<form action="editcart.php" method="get">
-								<td><input style="width: 60px;" type="number" min="1" name="soluong" height="40" value="<?php echo $sl; ?>">
+								<td><input style="width: 60px;" type="number" min="1" max="<?php echo $slc; ?>" name="soluong" height="40" value="<?php echo $sl; ?>">
 									<input type="hidden" name="id" value="<?php echo $id; ?>">
 								</td>
 								<td><?php echo number_format($row['gia']*$sl); ?></td>
@@ -89,7 +95,7 @@
 								$_SESSION['tongtien'] = $tongtien;
 					} ?>
 					</tbody>
-
+ 
 				</table>
 			</div>
 			<?php }} ?>

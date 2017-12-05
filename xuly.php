@@ -34,3 +34,10 @@
 	}
 	?>
 
+	<select name="" id="">
+		<option value="id_categ">Name category</option>
+		<option value=""></option>
+		<option value=""></option>
+		<option value=""></option>
+	</select>
+

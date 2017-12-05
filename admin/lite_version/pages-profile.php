@@ -133,14 +133,14 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-12">Hinh anh</label>
+                                        <label class="col-md-12">Hình ảnh</label>
                                         <div class="col-md-12">
                                             <input type="file" name="hinhanh"  class="form-control form-control-line"><?php echo $row['image']; ?>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-12">
-                                            <button type="submit" name="update" class="btn btn-success">Update thông tin cá nhân</button>
+                                            <button type="submit" name="update" class="btn btn-success">Cập nhật thông tin cá nhân</button>
                                         </div>
                                     </div>
                                 </form>
@@ -188,7 +188,7 @@
                 </div>
             </div>
             <footer class="footer text-center">
-                <p>Copyright&copy; Frteam | MNM | 2017</p>
+                <p>&copy;Copyright Frteam | MNM | 2017</p>
             </footer>
         </div>
     </div>

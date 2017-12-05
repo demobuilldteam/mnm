@@ -10,10 +10,10 @@
 
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/style.css">
-	
+
 	<script src="js/jquery.min.js"></script>
 	<script src="js/index.js"></script>
-	<?php 
+	<?php
 	// session_start();
 	include ("connect.php");
 	if(isset($_POST['submit'])){
@@ -24,7 +24,7 @@
 		$qr = "insert into feedback(fullname,email,messages) values ('{$fullname}','{$email}','{$mess}')";
 		if(mysqli_query($conn,$qr)==true){
 			$_SESSION['note_feedback'] = "Thank you feedbacked for us!";
-			
+
 		}else{
 			$_SESSION['note_feedback'] = "Had a few error!!";
 		}
@@ -48,6 +48,24 @@
 					<li><a href="#" id="review">reviews</a></li>
 				</ul>
 			</div>
+			<?php
+				if(isset($_SESSION['fullname'])){
+
+			?>
+				<div class="menu_right">
+					<ul>
+						<li><a href="#"><i class="fa fa-user" aria-hidden="true"></i><?php echo $_SESSION['fullname']; ?></a></li>
+						<li><a href="user/logout.php">Log out</a></li>
+						<?php
+							if(isset($_SESSION['rule'])){
+						?>
+						<li><a href="admin/lite_version/pages-profile.php">Admin</a></li>
+						<?php } ?>
+					</ul>
+				</div>
+			<?php
+				}
+			?>
 		</div>
 	</div>
 	<div class="banner">
@@ -73,8 +91,8 @@
 					<div class="list_menu">
 						<ul>
 							<li><a href="" id="">my account</a></li>
-							<li><a href="user/login.php" id="">Login</a></li>
-							<li><a href="" id="">sign up</a></li>
+							<li><a href="user/login.php" >Login</a></li>
+							<li><a href="user/signup.php" >sign up</a></li>
 						</ul>
 					</div>
 				</div>
@@ -98,14 +116,14 @@
 						<h5>Frteam-2017</h5>
 						<p>If you have anything questions or wonder please write down and send it for us.Thank you!!</p>
 					</div>
-					<?php 
+					<?php
 						if (isset($_SESSION['note_feedback'])) {
 					?>
 							<div class="alert alert-success">
 								<?php echo $_SESSION['note_feedback']; ?>
 							</div>
 					<?php
-						session_destroy();
+						unset($_SESSION['note_feedback']);
 						}
 					?>
 					<form action="contact.php" method="POST"  role="form">
@@ -125,7 +143,7 @@
 							<button type="submit" class="btn btn-primary" name="submit" value="submit"><i class="fa fa-paper-plane fa-2x" aria-hidden="true"><span style="font-size: 18px;line-height: 43px;padding-left: 5px;">Please,send it for us!</span></i></button>
 						</div>
 
-					</form>					
+					</form>
 				</div>
 			</div>
 		</div>
@@ -133,5 +151,35 @@
 	<?php
 		include 'foot.php'
 	?>
-</div>	
+	<div class="back_top"><i class="fa fa-chevron-up fa-2x" aria-hidden="true"></i></div>
+	<div class="share_fb">
+		<iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fmoto-shop.herokuapp.com%2F&layout=button_count&size=large&mobile_iframe=true&appId=220379985135243&width=95&height=28" width="95" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+	</div>
+	 <?php if(isset($_SESSION['noti_c'])){
+	 	// $mes = $_SESSION['noti_c'];
+  	echo "<script>alert('You payed successful - Thank you so much!');</script>";
+  	unset($_SESSION['noti_c']);
+  } ?>
+	<script src="js/wethear.js"></script>
+
+	<script>
+		function myMap() {
+		  var myCenter = new google.maps.LatLng(16.061826, 108.160701);
+		  var mapCanvas = document.getElementById("map");
+		  var mapOptions = {center: myCenter, zoom: 16};
+		  var map = new google.maps.Map(mapCanvas, mapOptions);
+		  var marker = new google.maps.Marker({position:myCenter});
+		  marker.setMap(map);
+
+		  // Zoom to 9 when clicking on marker
+		  google.maps.event.addListener(marker,'click',function() {
+		    map.setZoom(16);
+		    map.setCenter(marker.getPosition());
+		  });
+		}
+	</script>
+
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-PVEwxvxIPSiiHzvGt0isp460L9qH1Ro&callback=myMap"
+  type="text/javascript"></script>
+</div>
 </body>

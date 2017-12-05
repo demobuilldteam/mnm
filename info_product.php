@@ -10,7 +10,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/style.css">
-	
+
 	<script src="js/jquery.min.js"></script>
 	<script src="js/index.js"></script>
 </head>
@@ -25,12 +25,6 @@
 	}(document, 'script', 'facebook-jssdk'));</script>
 	<!-- head -->
 	<?php include 'head.php' ?>
-	<?php if(isset($_SESSION['addcart'])){ 
-			$add = $_SESSION['addcart'];
-			echo $add;
-			unset($_SESSION['addcart']);
-		}
-	?>
 	<!-- content -->
 	<div class="content">
 		<div class="container">
@@ -41,7 +35,7 @@
 			</div>
 			<div class="infor_product">
 				<div class="row">
-					<?php 
+					<?php
 						include ("connect.php");
 					    $sort_code = "";
 						if(isset($_GET['id'])){
@@ -53,7 +47,7 @@
 								$_SESSION['maloai'] = $ro['maloai'];
 					?>
 						<div class="col-md-4 col-xs-12 col-sm-4">
-							
+
 							<div class="imageinfo">
 								<img src="images/<?php echo $ro['image']; ?>"  alt="" width="250" height="300">
 							</div>
@@ -62,12 +56,12 @@
 							<h5><?php echo $ro['ten']; ?></h5>
 							<p id="mota_infor"><?php echo $ro['mota']; ?></p>
 							<p><span style="font-size: 18px;color: #dada13;font-weight: bold;">
-								<?php 
+								<?php
 									$english_format_number = number_format($ro['gia']);
-									echo $english_format_number; 
+									echo $english_format_number;
 									?>
 							VND</span></p>
-							<!-- <p>Số lượng: <?php echo $ro['soluong']; ?></p> -->
+							<p>Số lượng: <?php echo $ro['soluong']; ?></p>
 							<p>Kiễu: <?php echo $ro['kieu']; ?></p>
 							<div class="button" style="width: 50%;">
 								<div class="add_card">
@@ -75,10 +69,10 @@
 								</div>
 							</div>
 						</div>
-					<?php 
+					<?php
 						}
 					 ?>
-						
+
 					</div>
 					<!-- commet fb-->
 					<div class="row">
@@ -93,24 +87,24 @@
 					<div class="row">
 						<?php if(isset($_SESSION['maloai'])){?>
 						<h4>That's is suggest for you</h4>
-						<?php 
+						<?php
 							$maloai = $_SESSION['maloai'];
 							$qr = "select * from product where maloai='$maloai' limit 7";
 							$rs = mysqli_query($conn,$qr);
 							while($ro = mysqli_fetch_array($rs)){
 						?>
-						<div class="col-md-3 col-xs-12 col-sm-6 item_new">		
+						<div class="col-md-3 col-xs-12 col-sm-6 item_new">
 							<div class="image">
 								<img src="images/<?php echo $ro['image']; ?>" class="image_new" alt="" width="150" height="150">
 							</div>
 							<h5><?php echo $ro['ten']; ?></h5>
 							<div class="info_product">
-								
+
 								<p class="mota"><?php echo $ro['mota']; ?></p>
 								<p><span>
-									<?php 
+									<?php
 										$english_format_number = number_format($ro['gia']);
-										echo $english_format_number; 
+										echo $english_format_number;
 										?>
 								VND</span></p>
 							</div>
@@ -131,6 +125,12 @@
 	<?php
 		include 'foot.php'
 	?>
-	
+	<?php if(isset($_SESSION['addcart'])){
+			$add = $_SESSION['addcart'];
+			echo $add;
+			unset($_SESSION['addcart']);
+		}
+	?>
+
 </body>
 </html>

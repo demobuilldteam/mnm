@@ -35,15 +35,15 @@
 						$('.add_p').html(data);
 					});
 
-				}); 
-			}); 
+				});
+			});
 	</script>
 </head>
 <body>
 	<!-- head -->
-	 <?php include 'head.php' 
+	 <?php include 'head.php'
 
-	 ?> 
+	 ?>
 
 	<!-- content -->
 	<div class="content">
@@ -53,7 +53,7 @@
 				include 'menu_left_content.php'
 			?>
 			<div class="right_content">
-				
+
 				<!-- carousel -->
 				<div class="slide">
 					<div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -82,7 +82,7 @@
 					          <p>Thank you, Chicago!</p>
 					        </div>
 					      </div>
-					    
+
 					      <div class="item">
 					        <img src="images/slide3.jpg" alt="New York" style="width:100%;height: 521;">
 					        <div class="carousel-caption">
@@ -90,7 +90,7 @@
 					          <p>We love the Big Apple!</p>
 					        </div>
 					      </div>
-					  
+
 					    </div>
 
 					    <!-- Left and right controls -->
@@ -103,13 +103,13 @@
 					      <span class="sr-only">Next</span>
 					    </a>
 					</div>
-					
+
 				</div>
-								
+
 				<!-- list new products -->
 				<div class="new_product">
-					
-					<?php 
+
+					<?php
 						$_SESSION['loai'] = NULL;
 						include ("connect.php");
 						$ten = "";
@@ -120,13 +120,13 @@
 							$ten = $_GET['search_field'];
 							$sql = "select * from product where ten	like '%$ten%'";
 							$result = mysqli_query($conn,$sql);
-							
-								
+
+
 					?>
 						<h4>Your search</h4>
 						<div class="add_p ">
 							<div class="row">
-								<?php 
+								<?php
 									while($row = mysqli_fetch_array($result)){
 								?>
 									<div class="col-md-3 col-xs-12 col-sm-6 item_new">
@@ -144,19 +144,19 @@
 											</div>
 											<div class="detail"><i class="fa fa-info" aria-hidden="true"></i></div>
 										</div>
-									</div>	
-								<?php 
+									</div>
+								<?php
 									}
 								 ?>
 							</div>
 						</div>
-					<?php 
+					<?php
 						}else{
 					?>
 						<h4>New Product</h4>
 						<div class="row">
 							<div class="add_p">
-								<?php 
+								<?php
 									include ("connect.php");
 									$sql = "select * from product order by created DESC,ten ASC limit 4";
 									$result = mysqli_query($conn,$sql);
@@ -164,18 +164,18 @@
 
 								?>
 									<div class="col-md-3 col-xs-12 col-sm-6 item_new">
-										
+
 										<div class="image">
 											<img src="images/<?php echo $ro['image']; ?>" class="image_new" alt="" width="150" height="150">
 										</div>
 										<h5><?php echo $ro['ten']; ?></h5>
 										<div class="info_product">
-											
+
 											<p class="mota"><?php echo $ro['mota']; ?></p>
 											<p><span>
-												<?php 
+												<?php
 													$english_format_number = number_format($ro['gia']);
-													echo $english_format_number; 
+													echo $english_format_number;
 													?>
 											VND</span></p>
 										</div>
@@ -186,35 +186,35 @@
 											<div class="detail"><i class="fa fa-info" aria-hidden="true"></i></div>
 										</div>
 									</div>
-								<?php 
+								<?php
 									}
 								 ?>
 							</div>
 						</div>
 						<?php if($_SESSION['loai'] == NULL) {?>
 						<div class="new_product">
-							<h4>featured products</h4>
+							<h4>sell much</h4>
 							<div class="row">
-								<?php 
+								<?php
 									include ("connect.php");
-									$sql = "select * from product order by gia ASC,ten ASC limit 4";
+									$sql = "select * from product inner join receipt on product.id = receipt.masp order by receipt.soluong DESC limit 4";
 									$result = mysqli_query($conn,$sql);
 									while($ro = mysqli_fetch_array($result)){
 
 								?>
 									<div class="col-md-3 col-xs-12 col-sm-6 item_new">
-										
+
 										<div class="image">
 											<img src="images/<?php echo $ro['image']; ?>" class="image_new" alt="" width="150" height="150">
 										</div>
 										<h5><?php echo $ro['ten']; ?></h5>
 										<div class="info_product">
-											
+
 											<p class="mota"><?php echo $ro['mota']; ?></p>
 											<p><span>
-												<?php 
+												<?php
 													$english_format_number = number_format($ro['gia']);
-													echo $english_format_number; 
+													echo $english_format_number;
 													?>
 											VND</span></p>
 										</div>
@@ -225,42 +225,47 @@
 											<div class="detail"><i class="fa fa-info" aria-hidden="true"></i></div>
 										</div>
 									</div>
-								<?php 
+								<?php
 									}
 								 ?>
 							</div>
 						</div>
 						<?php } ?>
-					<?php 	
+					<?php
 						}
 					 ?>
 				</div>
 				<!-- list FEATURED PRODUCTS -->
-				
-		    </div>  
+
+		    </div>
 		</div>
 	</div>
-	
+
 	</div>
 	<?php include 'foot.php' ?>
 	<div class="back_top"><i class="fa fa-chevron-up fa-2x" aria-hidden="true"></i></div>
 	<div class="share_fb">
 		<iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fmoto-shop.herokuapp.com%2F&layout=button_count&size=large&mobile_iframe=true&appId=220379985135243&width=95&height=28" width="95" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
 	</div>
+	 <?php if(isset($_SESSION['noti_c'])){
+	 	// $mes = $_SESSION['noti_c'];
+  	echo "<script>alert('You payed successful - Thank you so much!');</script>";
+  	unset($_SESSION['noti_c']);
+  } ?>
 	<script src="js/wethear.js"></script>
 
 	<script>
 		function myMap() {
-		  var myCenter = new google.maps.LatLng(16.054407,108.202167);
+		  var myCenter = new google.maps.LatLng(16.061826, 108.160701);
 		  var mapCanvas = document.getElementById("map");
-		  var mapOptions = {center: myCenter, zoom: 14};
+		  var mapOptions = {center: myCenter, zoom: 16};
 		  var map = new google.maps.Map(mapCanvas, mapOptions);
 		  var marker = new google.maps.Marker({position:myCenter});
 		  marker.setMap(map);
 
 		  // Zoom to 9 when clicking on marker
 		  google.maps.event.addListener(marker,'click',function() {
-		    map.setZoom(14);
+		    map.setZoom(16);
 		    map.setCenter(marker.getPosition());
 		  });
 		}
@@ -268,5 +273,6 @@
 
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-PVEwxvxIPSiiHzvGt0isp460L9qH1Ro&callback=myMap"
   type="text/javascript"></script>
+
 </body>
 </html>

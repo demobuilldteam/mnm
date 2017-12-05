@@ -246,7 +246,7 @@
 				?>
 				<div class="alert alert-success" role="alert"><?php echo $_SESSION['notice']; ?></div>	
 				<?php	
-					session_destroy();
+					unset($_SESSION['notice']);
 					}else{
 				?>
 				<div class="login">

@@ -24,7 +24,6 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
-   
 </head>
 
 <body class="fix-header card-no-border">
@@ -42,8 +41,11 @@
         <!-- ============================================================== -->
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
+       
+        
         <?php 
-            session_start(); 
+            session_start();
+
             include ("left-sidebar.php"); ?>
         <div class="page-wrapper">
           
@@ -51,62 +53,52 @@
                
                 <div class="row page-titles">
                     <div class="col-md-6 col-8 align-self-center">
-                        <h3 class="text-themecolor m-b-0 m-t-0">Sản phẩm</h3>
+                        <h3 class="text-themecolor m-b-0 m-t-0">Hóa đơn</h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                            <li class="breadcrumb-item active">Sản phẩm</li>
+                            <li class="breadcrumb-item active">Hóa đơn</li>
                         </ol>
                     </div>
-                    <div class="col-md-6 col-4 align-self-center">
-                        <a href="add-product.php" class="btn pull-right hidden-sm-down btn-success">Thêm sản phẩm</a>
-                    </div>
+                   
                 </div>
-                <?php
-                if(isset($_SESSION['noti-err-pr']) && !is_null($_SESSION['noti-err-pr'])) {
-                ?>
+               
+                 <?php if(isset($_SESSION['noti-err-pr'])){
+                 ?>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="alert alert-success">
-                        <?php 
-                            $me = $_SESSION['noti-err-pr']; 
-                            echo $me; 
-                        ?>
-                         </div>
+                           <?php 
+                           $loi = $_SESSION['noti-err-pr'];
+                           echo $loi;
+                           ?>
+                        </div>
                     </div>
                 </div>
-                <?php $_SESSION['noti-err-pr']=NULL;} ?>
+                <?php unset($_SESSION['noti-err-pr']); } ?>
                 <div class="row">
                     <!-- column -->
                     <div class="col-sm-12">
-                        
                         <div class="card">
                             <div class="card-block">
-                                <h4 class="card-title">Sản phẩm</h4>
+                                <h4 class="card-title">Loại sản phẩm</h4>
                                 <div class="table-responsive">
                                     <table class="table">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
+                                                <th>Mã hóa đơn</th>
+                                                <th>Mã sản phẩm</th>
                                                 <th>Tên sản phẩm</th>
-                                                <th>Mô tả</th>
+                                                <th>Tên khách hàng</th>
                                                 <th>Số lượng</th>
-                                                <th>Giá(VND)</th>
-                                                <th>Mã loại</th>
-                                                <th>Hình ảnh</th>
-                                                <th>Thời gian</th>
-                                                <th colspan="2"></th>
+                                                <th>Giá</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-
                                             <?php
                                                 include ("../../connect.php");
-                                                if(isset($_GET['search'])){
-                                                    $search = $_GET['search'];
-                                                    $qr = "select * from product where ten like '%$search%'";
-                                                }else{
-                                                    $qr = "select * from product";
-                                                }
+
+                                                $qr = "select * from receipt";
 
                                                 $result = mysqli_query($conn,$qr);
                                                 $i = 1;
@@ -114,15 +106,14 @@
                                             ?>
                                             <tr>
                                                 <td><?php echo $i; ?></td>
+                                                <td><?php echo $row['id_receipt']; ?></td>
+                                                <td><?php echo $row['masp']; ?></td>
                                                 <td><?php echo $row['ten']; ?></td>
-                                                <td><?php echo $row['mota']; ?></td>
+                                                <td><?php echo $row['tenkh']; ?></td>
                                                 <td><?php echo $row['soluong']; ?></td>
                                                 <td><?php echo $row['gia']; ?></td>
-                                                <td><?php echo $row['maloai']; ?></td>
-                                                <td><img src="../../images/<?php echo $row['image']; ?>" alt="" width="150" height="160"></td>
-                                                <td><?php echo $row['created']; ?></td>
-                                                <td><a href="edit-product.php?id=<?php echo $row['id']; ?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-                                                <td><a href="delete-product.php?id=<?php echo $row['id']; ?>"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                                <td><a href="delete-hoadon.php?id=<?php echo $row['id_receipt']; ?>" aria-hidden="true"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                                
                                             </tr>
                                             <?php
                                                 $i += 1;}
@@ -138,7 +129,7 @@
             </div>
           
             <footer class="footer text-center">
-                <p>&copy;Copyright Frteam | MNM | 2017</p>
+              <p>&copy;Copyright Frteam | MNM | 2017</p>
             </footer>
         
         </div>

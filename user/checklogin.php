@@ -17,7 +17,7 @@
 					$_SESSION['rule'] = $row['rule'];
 				}
 			}
-			header("location:../index.php");
+			header("location:../listcart.php");
 		}else{
 			$_SESSION['errlogin'] = "Email address or password is invaild!";
 			header("location:login.php");
