@@ -25,6 +25,12 @@
 	}(document, 'script', 'facebook-jssdk'));</script>
 	<!-- head -->
 	<?php include 'head.php' ?>
+	<?php if(isset($_SESSION['addcart'])){ 
+			$add = $_SESSION['addcart'];
+			echo $add;
+			unset($_SESSION['addcart']);
+		}
+	?>
 	<!-- content -->
 	<div class="content">
 		<div class="container">

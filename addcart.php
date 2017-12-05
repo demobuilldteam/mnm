@@ -18,6 +18,7 @@
 			$_SESSION['cart'][$id] = 1;
 		}
 	}
+	$_SESSION['addcart'] = "<script>alert('you added to your cart!');</script>";
 	header("location: info_product.php?id=".$_GET['id']);
 
 ?>
