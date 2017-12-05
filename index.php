@@ -35,8 +35,8 @@
 						$('.add_p').html(data);
 					});
 
-				});
-			});
+				}); 
+			}); 
 	</script>
 </head>
 <body>
